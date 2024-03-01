@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
+  <link rel="stylesheet" href="./arquivos/styles.css">
+  <link rel="shortcut icon" href="/arquivos/logo nextfit.png" />
+  <script src="https://cdn.tiny.cloud/1/kacifcf3hr981xcm37om2ximqlp1fub3ufswvcru49gski63/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+  <script type="text/javascript" src="tinymce/tinymce.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <title>Ferramenta de Templates</title>
+</head>
+<body>
+  <div class="main-container">
+    <div id="mensagemCopia" style="display: none;"></div>
+    <div id="mensagemDeErro">
+        <div id="containerErro">
+            <p id="message" class="d-flex align-items-center justify-content-center mt-30">Você já adicionou um arquivo.</p>
+            <div class="text-center">
+                <button onclick="removeFile()" class="btn btn-danger" id="removeBtn" style="display:none;">Remover Arquivo</button>
+                <button onclick="closeContainer()" class="btn btn-primary" id="returnBtn" style="display: none;">Voltar</button>
+            </div>
+        </div>
+    </div>    
+  <div class="container mt-5 text-center" id="container" >
+    <input type="file" id="fileInput" class="form-control w-25 mb-3 bg-success text-white" />
+    <button onclick="renderDocument()" class="btn btn-success mt-3 d-flex justify-content-start" id="btnFormat">Formatar e Editar</button>
+    <a href="https://www.loom.com/share/d7d81f995bb643f0b2ea4c05b73a4765?sid=9f4e1d55-acd1-44b1-8fb7-21a8afb7bbeb" target="_blank"><button class="btn btn-danger justify-content-center align-items-center" id="howToUse">Como usar?</button></a>
+    <button onclick="clickParaVerificar()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnVerification" style="display: none;">Verificar</button>
+    <div id="output">
+    </div>
+    <div id="btnDownloadContainer"></div>
+    <!--<div id="editor" contenteditable="true" class="border border-secondary rounded p-3 border-color-blue"></div> -->
+    <textarea id="editor"></textarea>
+  </div>
+  <div class="variables-container">
+    <img src="./arquivos/logo nextfit.png" alt="" id="logoNextFit">
+    <div id="recebeAction"></div>
+    <h1 class="mt-2 d-flex justify-content-center" id="titleVariable">Templates</h1>
+    <p class="d-flex justify-content-center" id="subtitleVariable">Configure seu template!</p>
+    <br>
+    <div id="searchCamp" class="input-group">
+      <input type="text" placeholder="Pesquise a variável..." class="form-control" id="inputPesquisa">
+    </div>
+    <br>
+    <!--------------------------------------------------------------------------->
+    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('clientes')">Dados do Cliente <span id="arrowIconClientes" class="arrow-down">&#10095;</span></button>
+    <div class="container-clientes" id="clientesContainer">
+      <button class="btn btn meusBotoes" id="clienteNome" onclick="copiarTexto('<<[NomeCliente]>>')" data-mensagem="Exemplo de uso: Fulano da Silva">Nome do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteCpf" onclick="copiarTexto('<<[CpfCliente]>>')" data-mensagem="Exemplo de uso: 187.553.560-87">CPF do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteRG" onclick="copiarTexto('<<[RgCliente]>>')" data-mensagem="Exemplo de uso: 23.118.664-2">RG do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteNasc" onclick="copiarTexto('<<[DataNascimentoCliente]>>')" data-mensagem="Exemplo de uso: 20/08/1992">Data de nascimento do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteSexo" onclick="copiarTexto('<<[SexoCliente]>>')" data-mensagem="Exemplo de uso: Masculino/Feminino">Sexo do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteEmail" onclick="copiarTexto('<<[EmailCliente]>>')" data-mensagem="Exemplo de uso: emaildocliente@gmail.com">E-mail do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteTel" onclick="copiarTexto('<<[TelefoneCliente]>>')" data-mensagem="Exemplo de uso: (48) 987654321">Telefone do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteEndereco" onclick="copiarTexto('<<[EnderecoCliente]>>')" data-mensagem="Exemplo de uso: Avenida Tietê">Endereço do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteNumEndereco" onclick="copiarTexto('<<[NumeroEnderecoCliente]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteComp" onclick="copiarTexto('<<[ComplementoEnderecoCliente]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteBairro" onclick="copiarTexto('<<[BairroCliente]>>')" data-mensagem="Exemplo de uso: Centro">Bairro do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteCEP" onclick="copiarTexto('<<[CepCliente]>>')" data-mensagem="Exemplo de uso: 12345-678">CEP do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteCidade" onclick="copiarTexto('<<[CidadeCliente]>>')" data-mensagem="Exemplo de uso: Nova Veneza">Cidade do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteUF" onclick="copiarTexto('<<[UfCliente]>>')" data-mensagem="Exemplo de uso: SC">UF do cliente</button>
+    </div>
+    <br>
+    <hr>
+    <!--------------------------------------------------------------------------->
+    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('empresa')">Dados da Empresa <span id="arrowIconEmpresa" class="arrow-down">&#10095;</span></button>
+    <div class="container-empresa" id="empresaContainer">
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[RazaoSocialFilial]>>')" data-mensagem="Exemplo de uso: Academia de Musculação Fitastic LTDA">Razão social da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NomeFantasiaFilial]>>')" data-mensagem="Exemplo de uso: Fitastic Academia">Nome fantasia da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<image [LogoFilial]>>')" data-mensagem="Exemplo de uso: Imagem da logo">Logomarca da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CnpjCpfFilial]>>')" data-mensagem="Exemplo de uso: 31.265.901/0001-39">CPF/CNPJ da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[TelefoneFilial]>>')" data-mensagem="Exemplo de uso: (48) 987654321">Telefone da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EmailFilial]>>')" data-mensagem="Exemplo de uso: contato@nextfit.com.br">E-mail da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EnderecoFilial]>>')" data-mensagem="Exemplo de uso: Avenida Tietê">Endereço da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NumeroEnderecoFilial]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ComplementoEnderecoFilial]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[BairroFilial]>>')" data-mensagem="Exemplo de uso: Centro">Bairro da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CepFilial]>>')" data-mensagem="Exemplo de uso: 12345-678">CEP da empresa</button>
+      <button class="btn btn me usBotoes" onclick="copiarTexto('<<[CidadeFilial]>>')" data-mensagem="Exemplo de uso: Nova Veneza">Cidade da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[UfFilial]>>')" data-mensagem="Exemplo de uso: SC">UF da empresa</button>
+    </div>
+    <br>
+    <hr>
+    <!--------------------------------------------------------------------------->
+    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('contrato')">Dados do Contrato <span id="arrowIconContrato" class="arrow-down">&#10095;</span></button>
+    <div class="container-contrato" id="contratoContainer">
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DescricaoContrato]>>')" data-mensagem="Exemplo de uso: Musculação 3x semana">Descrição do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DuracaoContrato]>>')" data-mensagem="Exemplo de uso: 12 meses">Duração do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ValorTotalContrato]>>')" data-mensagem="Exemplo de uso: 199.90">Valor total do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ValorTotalContratoFormatado]>>')" data-mensagem="Exemplo de uso: 199,90">Valor total do contrato (formatado)</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ValorAdesao]>>')" data-mensagem="Exemplo de uso: 19.9">Valor de matrícula do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ValorAdesaoFormatado]>>')" id="matriculaFormatado" data-mensagem="Exemplo de uso: 19,90">Valor de matrícula do contrato (formatado)</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ValorTotalContratoSemDesconto]>>')" data-mensagem="Exemplo de uso: 150.00">Valor total contrato s/ desconto</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ValorTotalContratoSemDescontoFormatado]>>')" id="semDescontoFormatado" data-mensagem="Exemplo de uso: 150,00">Valor total contrato s/ desconto (formatado)</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[QuantMaximoSuspensoes]>>')" id="qtdMaxSus" data-mensagem="Exemplo de uso: 2">Quantidade máxima de suspensões do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[QuantMaximoDiasSuspensao]>>')"  id="qtdMaxDiasSus" data-mensagem="Exemplo de uso: 30">Quantidade máxima de dias nas suspensões do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataInicio]>>')" data-mensagem="Exemplo de uso: 01/01/2024">Data de início do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataValidade]>>')" data-mensagem="Exemplo de uso: 01/02/2024">Data de validade do contrato</button>
+    </div>
+
+    <br>
+    <hr>
+    <!--------------------------------------------------------------------------->
+    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('responsavel')">Dados do Responsável <span id="arrowIronResponsavel" class="arrow-down">&#10095;</span></button>
+    <div class="container-responsavel" id="responsavelContainer">
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[TemResponsavel]>>')" data-mensagem="Exemplo de uso: Informa '1' para sim e '0' para não.">Cliente tem responsável?</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NomeResponsavel]>>')" data-mensagem="Exemplo de uso: Fulano da Silva">Nome do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CpfResponsavel]>>')" data-mensagem="Exemplo de uso: 191.000.000-00">CPF do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[RgResponsavel]>>')" data-mensagem="Exemplo de uso: 1234567">RG do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataNascimentoResponsavel]>>')" data-mensagem="Exemplo de uso: 20/11/1990">Data de nascimento do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[SexoResponsavel]>>')" data-mensagem="Exemplo de uso: Masculino/Feminino">Sexo do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EmailResponsavel]>>')" data-mensagem="Exemplo de uso: contato@nextfit.com.br">Email do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[TelefoneResponsavel]>>')" data-mensagem="Exemplo de uso: (48) 987654321">Telefone do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EnderecoResponsavel]>>')" data-mensagem="Exemplo de uso: Avenida Tietê">Endereço do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NumeroEnderecoResponsavel]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ComplementoEnderecoResponsavel]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[BairroResponsavel]>>')" data-mensagem="Exemplo de uso: Centro">Bairro do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CepResponsavel]>>')" data-mensagem="Exemplo de uso: 12345-678">CEP do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CidadeResponsavel]>>')" data-mensagem="Exemplo de uso: Nova Veneza">Cidade do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[UfResponsavel]>>')" data-mensagem="Exemplo de uso: SC">UF do responsável</button>
+      <div id="mensagem" class="escondido"></div>
+    </div>
+
+    <br>
+    <hr>
+    <!--------------------------------------------------------------------------->
+    <button class="btn btn-dark d-flex justify-content-center" id="variaveisDropdownClientes" onclick="mostrarSubMenuEstrutura('estrutura');">Personalização <span id="arrowIconEstrutura" class="arrow-down">&#10095;</span></button>
+    <a href="https://www.loom.com/share/d7d81f995bb643f0b2ea4c05b73a4765?sid=9f4e1d55-acd1-44b1-8fb7-21a8afb7bbeb" target="_blank"><button class="btn btn-dark d-flex justify-content-center" id="howToPersonalize">❓</button></a>
+    <div class="container-estrutura" id="estruturaContainer">
+      <button id="btnListagem" class="btn btn meusBotoes" onclick="mostrarListagem()" data-mensagem="Estruturas de repetição">Listagem de modalidade <span id="arrowIconListagem" class="arrow-down2">&#10095;</span></button>
+      <br>
+      <div id="listagemForeach" style="display: none;">
+        <p id="forEachP">Para cada modalidade, mostrar:</p>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="nomeModalidade">
+          <label class="form-check-label" for="">Nome da modalidade</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="limiteAcessos">
+          <label class="form-check-label" for="">Limite de acessos</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="qtdSessoesSemana">
+          <label class="form-check-label" for="">Quantidade de sessões por semana</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="diasLiberadosAcesso">
+          <label class="form-check-label" for="">Dias liberados para acesso</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="horariosLiberadosAcesso">
+          <label class="form-check-label" for="">Horários liberados para acesso</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="diasHorariosLiberadosAcesso">
+          <label class="form-check-label" for="">Dias e horários liberados para acesso</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="descTipoModalidade">
+          <label class="form-check-label" for="">Descrição do tipo de modalidade</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="qtdPacoteAulas">
+          <label class="form-check-label" for="">Quantidade do pacote de aulas</label>
+        </div>
+        <p style="font-size: 20px; margin-top: 20px; font-weight: 500;color: #630070;">Visualização do cliente: (exemplo)</p>
+        <textarea name="" id="textAreaListagem" cols="77" rows="12" readonly></textarea>
+        <button class="btn" id="copyBtnList" onclick="copiarTextoList()">Copiar</button>
+        <hr class="hr-personalizacao">
+      </div>
+
+
+      <button id="btnListagem" class="btn btn meusBotoes" onclick="mostrarListagemParcelas()" data-mensagem="Estruturas de repetição">Listagem de parcelas <span id="arrowIconListagemParcelas" class="arrow-down2">&#10095;</span></button>
+      <br>
+      <div id="listagemForEachParcelas" style="display: none;">
+        <p id="forEachParcela">Para cada parcela, mostrar:</p>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="valorParcelaFormatado">
+          <label class="form-check-label" for="">Valor</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="dataVencimento">
+          <label class="form-check-label" for="">Data de vencimento</label>
+        </div>
+        <p style="font-size: 20px; margin-top: 20px; font-weight: 500;color: #630070;">Visualização do cliente: (exemplo)</p>
+        <textarea name="" id="textAreaListagemParcela" cols="77" rows="4" readonly></textarea>
+        <button class="btn" id="copyBtnListParcela" onclick="copiarTextoListParcela()">Copiar</button>
+        <hr class="hr-personalizacao">
+      </div>
+      <button id="btnListagem" class="btn btn meusBotoes" onclick="mostrarVerificar()" data-mensagem="Verificações automáticas">Verificações <span id="arrowIconVerificar" class="arrow-down2">&#10095;</span></button>
+      <div id="verificacaoIf" style="display: none; text-align: center;">
+        <button id=""  style="display: flex;" class="btn btn meusBotoes" onclick="copiarTexto(`<<if [TemResponsavel > 0]>>INSIRA CONTEÚDO AQUI<</if>>`)" data-mensagem="Com essa verificação, você pode configurar uma informação adicional apenas para os alunos que possuem responsável financeiro.">Verificar responsável financeiro</button>
+        <button id=""  style="display: flex;" class="btn btn meusBotoes" onclick="copiarTexto(`<<if [ValorAdesao > 0]>>INSIRA CONTEÚDO AQUI<</if>>`)" data-mensagem="Com essa verificação, você pode configurar uma informação adicional apenas para os alunos que possuem taxa de adesão/matrícula no contrato.">Verificar taxa de matrícula</button>
+        <button id=""  style="display: flex;" class="btn btn meusBotoes" onclick="copiarTexto('<<if [QuantMaximoDiasSuspensao > 0]>>INSIRA CONTEÚDO AQUI<</if>>')" data-mensagem="Com essa verificação, você pode configurar uma informação adicional apenas para os alunos que podem suspender/trancar seus contratos.">Verificar suspensão de contrato</button>
+      </div>
+
+      <!-- <button class="btn btn meusBotoes" onclick="mostrarVerificar()" data-mensagem="Estrutura de condição">Verificação de informações <span id="arrowIconVerificar" class="arrow-down2">&#10095;</span></button>
+      <br>
+      <div id="verificacaoIf" style="display: none;">
+        <p id="forEachP">Para cada modalidade, mostrar:</p>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="nomeModalidade">
+          <label class="form-check-label" for="">Nome da modalidade</label>
+        </div>
+        <p style="font-size: 20px; margin-top: 20px; font-weight: 500;color: #630070;">Visualização do cliente: (exemplo)</p>
+        <textarea name="" id="textAreaListagem" cols="60" rows="8" readonly></textarea>
+      </div>
+      <div id="mensagem" class="escondido"></div>
+    </div> -->
+
+    <br>
+
+
+  </div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.0.2/mammoth.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.5.1/bluebird.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+  <script src="./arquivos/script.js"></script>
+  
+
+</body>
+</html>
