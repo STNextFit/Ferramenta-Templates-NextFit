@@ -13,9 +13,6 @@ if(!localStorage.getItem('popupShown')){
   popup.style.display = "flex"
   localStorage.setItem('popupShown', true)
 } 
-else{
-  alert('ja entrou aqui')
-}
 
 function fechaPopUp(){
   const background = document.getElementById("background");
