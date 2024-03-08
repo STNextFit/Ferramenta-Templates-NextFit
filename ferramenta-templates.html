@@ -27,7 +27,7 @@
   <div class="container mt-5 text-center" id="container" >
     <input type="file" id="fileInput" class="form-control w-25 mb-3 bg-success text-white" />
     <button onclick="renderDocument()" class="btn btn-success mt-3 d-flex justify-content-start" id="btnFormat">Formatar e Editar</button>
-    <a href="https://www.loom.com/share/d7d81f995bb643f0b2ea4c05b73a4765?sid=9f4e1d55-acd1-44b1-8fb7-21a8afb7bbeb" target="_blank"><button class="btn btn-danger justify-content-center align-items-center" id="howToUse">Como usar?</button></a>
+    <a href="https://www.loom.com/share/d7d81f995bb643f0b2ea4c05b73a4765?sid=9f4e1d55-acd1-44b1-8fb7-21a8afb7bbeb" target="_blank" id="tutorial"><button class="btn btn-danger justify-content-center align-items-center" id="howToUse">Como usar?</button></a>
     <button onclick="clickParaVerificar()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnVerification" style="display: none;">Verificar</button>
     <div id="output">
     </div>
@@ -102,6 +102,15 @@
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[QuantMaximoDiasSuspensao]>>')"  id="qtdMaxDiasSus" data-mensagem="Exemplo de uso: 30">Quantidade máxima de dias nas suspensões do contrato</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataInicio]>>')" data-mensagem="Exemplo de uso: 01/01/2024">Data de início do contrato</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataValidade]>>')" data-mensagem="Exemplo de uso: 01/02/2024">Data de validade do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataImpressao]>>')" data-mensagem="Exemplo de uso: 01/01/2024">Data de impressão do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataImpressaoCompleta]>>')" data-mensagem="Exemplo de uso: 01/01/2024 15:35">Data de impressão do contrato (com hora)</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataImpressaoFormatada]>>')" data-mensagem="Exemplo de uso: 1 de janeiro de 2024">Data de impressão do contrato (formatada)</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ValorTotalMedioMensalContrato]>>')" data-mensagem="Exemplo de uso: 99.90">Valor médio mensal do contrato</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ValorTotalMedioMensalContratoFormatado]>>')" data-mensagem="Exemplo de uso: 99,90">Valor médio mensal do contrato (formatado)</button>
+
+
+
+
     </div>
 
     <br>
@@ -198,6 +207,11 @@
         <button id=""  style="display: flex;" class="btn btn meusBotoes" onclick="copiarTexto(`<<if [TemResponsavel > 0]>>INSIRA CONTEÚDO AQUI<</if>>`)" data-mensagem="Com essa verificação, você pode configurar uma informação adicional apenas para os alunos que possuem responsável financeiro.">Verificar responsável financeiro</button>
         <button id=""  style="display: flex;" class="btn btn meusBotoes" onclick="copiarTexto(`<<if [ValorAdesao > 0]>>INSIRA CONTEÚDO AQUI<</if>>`)" data-mensagem="Com essa verificação, você pode configurar uma informação adicional apenas para os alunos que possuem taxa de adesão/matrícula no contrato.">Verificar taxa de matrícula</button>
         <button id=""  style="display: flex;" class="btn btn meusBotoes" onclick="copiarTexto('<<if [QuantMaximoDiasSuspensao > 0]>>INSIRA CONTEÚDO AQUI<</if>>')" data-mensagem="Com essa verificação, você pode configurar uma informação adicional apenas para os alunos que podem suspender/trancar seus contratos.">Verificar suspensão de contrato</button>
+      </div>
+      <button id="btnListagemEstrutura" class="btn btn meusBotoes " onclick="mostrarEstrutura()" data-mensagem="Estruturas prontas de If e Foreach">Estruturas prontas <span id="arrowIconEstruturasProntas" class="arrow-down2">&#10095;</span></button>
+      <div id="estruturasProntas" style="display: none; text-align: center;">
+        <button id=""  style="display: flex;" class="btn btn meusBotoes" onclick="copiarEstruturaForeach()" data-mensagem="Com essa estrutura, você pode mostrar os horários em que o aluno foi matriculado.">ForEach Grade de horários</button>
+        <button id=""  style="display: flex;" class="btn btn meusBotoes" onclick="copiarEstruturaTipos()" data-mensagem="Com essa estrutura, você pode configurar o template para funcionar com os 3 tipos de modalidades (Padrão, Agenda - Sessões ou Pacote).">If para tipos de modalidade</button>
       </div>
 
       <!-- <button class="btn btn meusBotoes" onclick="mostrarVerificar()" data-mensagem="Estrutura de condição">Verificação de informações <span id="arrowIconVerificar" class="arrow-down2">&#10095;</span></button>

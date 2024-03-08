@@ -44,6 +44,8 @@ function copiarTexto(texto) {
   }, 4000);
 }
 
+
+
 const arrowIcon2 = document.getElementById("arrowIconClientes");
 const arrowIcon = document.getElementById("arrowIconEmpresa");
 
@@ -463,7 +465,15 @@ function verificarTexto() {
     "modalidade.TipoDescricao",
     "modalidade.QtdePacoteAulas",
     "parcela.ValorFormatado",
-    "parcela.DataVencimento"
+    "parcela.DataVencimento",
+    "gradeHorario.DescricaoGradeHorario",
+    "gradeHorario.DiaDaSemana",
+    "gradeHorario.HorarioInicial",
+    "gradeHorario.HorarioFinal",
+    "gradeHorario.LocalAula",
+    "gradeHorario.InstrutorAula",
+    "modalidade.TipoLimiteAcessosPorPeriodo",
+    "modalidade.QtdeLimiteAcessosPorPeriodo"
   ];
 
   let temErros = false;
@@ -501,6 +511,7 @@ function verificarTexto() {
         outputDiv.style.boxShadow = "5px 5px 10px rgba(0, 0, 0, 0.5)";
         outputDiv.style.animation = "fadein 0.8s ease-in";
         outputDiv.style.overflowY = "scroll"
+        outputDiv.style.overflowX = "hidden"
         outputDiv.style.width = "40%"
         outputDiv.innerHTML += `O conteúdo <span class="error">"${variavelConteudo}"</span> da variável <span class="error">${variavelCompleta}</span><br>
              não existe na linha ${lineNumber}.<br><br>Sugestão de correção:<br>`;
@@ -573,13 +584,17 @@ function verificarTexto() {
   const REGEX3 = /<<if \[QuantMaximoDiasSuspensao > 0]>>([\s\S]*?)<<\/if>>/g;
   const REGEX4 = /<<foreach \[modalidade in Modalidades]>>([\s\S]*?)<<\/foreach>>/g;
   const REGEX5 = /<<foreach \[parcela in Parcelas]>>([\s\S]*?)<<\/foreach>>/g;
+  const REGEX6 = /<<foreach \[gradeHorario in modalidade.GradeHorarios]>>([\s\S]*?)<<\/foreach>>/g;
+  const REGEX7 = /<<if \[modalidade.TemGradeHorarios > 0]>>([\s\S]*?)<<\/if>>/g;
 
   const textoSemNada = textoSemVariaveis
     .replace(/<<if \[ValorAdesao > 0]>>([\s\S]*?)<<\/if>>/g, "")
     .replace(/<<if \[TemResponsavel > 0]>>([\s\S]*?)<<\/if>>/g, "")
     .replace(/<<if \[QuantMaximoDiasSuspensao > 0]>>([\s\S]*?)<<\/if>>/g, "")
     .replace(/<<foreach \[modalidade in Modalidades]>>([\s\S]*?)<<\/foreach>>/g, "")
-    .replace(/<<foreach \[parcela in Parcelas]>>([\s\S]*?)<<\/foreach>>/g, "");
+    .replace(/<<foreach \[parcela in Parcelas]>>([\s\S]*?)<<\/foreach>>/g, "")
+    .replace(/<<foreach \[gradeHorario in modalidade.GradeHorarios]>>([\s\S]*?)<<\/foreach>>/g)
+    .replace(/<<if \[modalidade.TemGradeHorarios > 0]>>([\s\S]*?)<<\/if>>/g);
 
   const semPTags = textoSemNada.replace(/<p>/g, "");
   const semPTagsFinal = semPTags.replace(/<\/?p>/g, "");
@@ -602,16 +617,21 @@ function verificarTexto() {
   const matches3 = REGEX3.exec(textoSemVariaveis);
   const matches4 = REGEX4.exec(textoSemVariaveis);
   const matches5 = REGEX5.exec(textoSemVariaveis);
+  const matches6 = REGEX6.exec(textoSemVariaveis);
+  const matches7 = REGEX7.exec(textoSemVariaveis);
   console.log("Texto sem variáveis: \n" + textoSemVariaveis)
   console.log(matches);
   let conteudoDentroDoIf = "";
-  if (matches || matches2 || matches3 || matches4 || matches5) {
+  if (matches || matches2 || matches3 || matches4 || matches5 || matches6 || matches7) {
     console.log("Entrou nos matches");
     if (matches) conteudoDentroDoIf += matches[1] || "";
     if (matches2) conteudoDentroDoIf += matches2[1] || "";
     if (matches3) conteudoDentroDoIf += matches3[1] || "";
     if (matches4) conteudoDentroDoIf += matches4[1] || "";
     if (matches5) conteudoDentroDoIf += matches5[1] || "";
+    if (matches6) conteudoDentroDoIf += matches6[1] || "";
+    if (matches7) conteudoDentroDoIf += matches7[1] || "";
+
 
     conteudoDentroDoIf = conteudoDentroDoIf
       .replace(/(<<\[([^>\s]+)]>>)/g, "")
@@ -2004,6 +2024,123 @@ function mostrarVerificar() {
     verificacoes.style.animation = "fade 0.5s ease-in-out";
   }
   arrowIconVerificar.classList.toggle("rotate1802");
+}
+
+function mostrarEstrutura() {
+  const verificacoes = document.getElementById("estruturasProntas");
+  if (verificacoes.style.display == "inherit") {
+    verificacoes.style.display = "none";
+  } else {
+    verificacoes.style.display = "inherit";
+    verificacoes.style.animation = "fade 0.5s ease-in-out";
+  }
+  arrowIconEstruturasProntas.classList.toggle("rotate1802");
+}
+
+function copiarEstruturaForeach() {
+  var textoEstrutura = `<<foreach [modalidade in Modalidades]>>
+    • <<[modalidade.DescricaoModalidade]>>
+    • <<[modalidade.QtdeSessoesPorSemana]>> sessões por semana
+  <<if [modalidade.TemGradeHorarios > 0]>>
+      ◦ Horários agendados: 
+      <<foreach [gradeHorario in modalidade.GradeHorarios]>>
+      • Nome da grade: <<[gradeHorario.DescricaoGradeHorario]>>
+        <<[gradeHorario.DiaDaSemana]>> das <<[gradeHorario.HorarioInicial]>> às <<[gradeHorario.HorarioFinal]>>;
+      <</foreach>>
+  <</if>> 
+  <</foreach>>`;
+
+  // Cria um elemento <textarea> dinamicamente
+  var inputTemporario = document.createElement("textarea");
+
+  // Define o valor do texto no elemento <textarea> para preservar a formatação
+  inputTemporario.value = textoEstrutura;
+
+  // Adiciona o elemento <textarea> ao corpo do documento
+  document.body.appendChild(inputTemporario);
+
+  // Seleciona o texto no elemento de input
+  inputTemporario.select();
+  inputTemporario.setSelectionRange(0, 99999); // Para dispositivos móveis
+
+  // Copia o texto para a área de transferência
+  document.execCommand("copy");
+
+  // Remove o elemento de input temporário
+  document.body.removeChild(inputTemporario);
+
+  // Exibe uma mensagem indicando que o texto foi copiado
+  const copiedElement = document.createElement("div");
+  copiedElement.innerHTML = `<div class="copied-text">
+      <button id="closeAction">OK</button>
+      Texto copiado!</div>`;
+  const recebeAction = document.getElementById("recebeAction");
+  recebeAction.innerHTML = "";
+  recebeAction.appendChild(copiedElement);
+  const closeAction = document.getElementById("closeAction");
+  closeAction.addEventListener("click", function () {
+    recebeAction.innerHTML = "";
+  });
+
+  setTimeout(function () {
+    recebeAction.removeChild(copiedElement);
+  }, 4000);
+}
+
+function copiarEstruturaTipos() {
+  var textoEstrutura = `<<foreach [modalidade in Modalidades]>><<if [modalidade.Tipo == 1] >>
+  Padrão
+    • <<[modalidade.DescricaoModalidade]>>
+      ◦ Limite de acessos: <<[modalidade.LimiteAcessos]>>
+      ◦ Dias liberados para acesso: <<[modalidade.DiasLiberadosParaAcesso]>>
+      ◦ Horários liberados para acesso: <<[modalidade.HorariosLiberadosParaAcesso]>>
+  <</if>><<if [modalidade.Tipo == 2] >>
+  Agenda sessões por semana
+    • <<[modalidade.DescricaoModalidade]>> 
+      ◦ <<[modalidade. QtdeSessoesPorSemana]>> sessões por semana
+      ◦ Horários agendados: <<foreach [gradeHorario in modalidade.GradeHorarios]>><<[gradeHorario.DiaDaSemana]>> das <<[gradeHorario.HorarioInicial]>> as <<[gradeHorario.HorarioFinal]>>; <</foreach>>
+  <</if>> <<if [modalidade.Tipo == 3] >>
+  Agenda pacote
+    • <<[modalidade.DescricaoModalidade]>> 
+      ◦ <<[modalidade.QtdePacoteAulas]>> aulas no pacote
+      ◦ Horários agendados: <<foreach [gradeHorario in modalidade.GradeHorarios]>><<[gradeHorario.DiaDaSemana]>> das <<[gradeHorario.HorarioInicial]>> as <<[gradeHorario.HorarioFinal]>>; <</foreach>>
+  <</if>><</foreach>>`;
+
+  // Cria um elemento <textarea> dinamicamente
+  var inputTemporario = document.createElement("textarea");
+
+  // Define o valor do texto no elemento <textarea> para preservar a formatação
+  inputTemporario.value = textoEstrutura;
+
+  // Adiciona o elemento <textarea> ao corpo do documento
+  document.body.appendChild(inputTemporario);
+
+  // Seleciona o texto no elemento de input
+  inputTemporario.select();
+  inputTemporario.setSelectionRange(0, 99999); // Para dispositivos móveis
+
+  // Copia o texto para a área de transferência
+  document.execCommand("copy");
+
+  // Remove o elemento de input temporário
+  document.body.removeChild(inputTemporario);
+
+  // Exibe uma mensagem indicando que o texto foi copiado
+  const copiedElement = document.createElement("div");
+  copiedElement.innerHTML = `<div class="copied-text">
+      <button id="closeAction">OK</button>
+      Texto copiado!</div>`;
+  const recebeAction = document.getElementById("recebeAction");
+  recebeAction.innerHTML = "";
+  recebeAction.appendChild(copiedElement);
+  const closeAction = document.getElementById("closeAction");
+  closeAction.addEventListener("click", function () {
+    recebeAction.innerHTML = "";
+  });
+
+  setTimeout(function () {
+    recebeAction.removeChild(copiedElement);
+  }, 4000);
 }
 
 document.addEventListener("DOMContentLoaded", function () {

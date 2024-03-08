@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: rgba(128, 128, 128, 0.397);
+    overflow-x: hidden;
   }
 
   #lineNumbers {
@@ -288,7 +289,7 @@ body {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border: none;
-  left: 19.7%;
+  left: 21%;
 }
 
 .button-copy:hover{
@@ -470,6 +471,21 @@ body {
 }
 
 #verificacaoIf button:hover{
+  background-color: #630070;
+}
+
+#estruturasProntas {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 11.5%;
+  width: 350%;
+}
+#estruturasProntas button {
+  height: 20%;
+  background-color: rgb(37, 37, 37);
+}
+
+#estruturasProntas button:hover{
   background-color: #630070;
 }
 
@@ -666,6 +682,14 @@ hr{
 }
 
 #btnListagem{
+  width: 80%;
+  height: 50px;
+  margin-left: 10%;
+  position: relative;
+}
+
+#btnListagemEstrutura{
+  margin-top: 40px;
   width: 80%;
   height: 50px;
   margin-left: 10%;
