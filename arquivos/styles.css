@@ -24,6 +24,168 @@ body {
     font-weight: bold;
 }
 
+#popup{
+  position: absolute;
+  display: flex;
+  margin-left: 24%;
+  margin-top: 8%;
+  border-radius: 20px;
+  width: 1000px;
+  background-color: rgb(255, 255, 255);
+  height: 600px;
+  box-shadow: 0px 5px 20px 5px rgba(0, 0, 0, 0.466);
+  z-index: 10;
+  animation: fadein 1s ease-in-out;
+  flex-direction: column;
+}
+
+#background{
+  width: 100%;
+  position: absolute;
+  height: 110%;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.329);
+  animation: fadein 1s ease-in-out;
+}
+
+#titlePopup{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-top: 5%;
+  font-size: 25px;
+  margin-bottom: -5%;
+  font-weight: 600;
+}
+
+
+#XQuit{
+  background-color: transparent;
+  font-size: 20px;
+  width: 20px;
+  margin-left: auto;
+  text-align: center;
+  padding: 15px;
+  margin-right: 1.5%;
+  padding-right: 29px;
+  height: 60px;
+  margin-top: 14px;
+  border-radius: 15px;
+  margin-bottom: -60px;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#XQuit:hover{
+  background-color: rgba(128, 128, 128, 0.452);
+}
+
+
+#gifTemplate{
+  scale: calc(0.7);
+  display: flex;
+  border-radius: 20px;
+}
+
+#btns{
+  margin-top: -5%;
+  display: flex;
+  flex-direction: row;
+}
+
+#btnPopUp1{
+  background-color: transparent;
+  width: 215px;
+  color: purple;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  border-radius: 12px;
+  margin-left: 15.5%;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+}
+
+#btnPopUp1:hover{
+  background-color: rgba(223, 0, 223, 0.308);
+}
+
+#btnPopUp1:hover::before {
+  content: "Copie estruturas prontas para verificação do tipo de modalidade e amostragem de grade de horários!"; /* Texto que será mostrado ao fazer hover */
+  position: absolute;
+  color: rgb(136, 9, 125);
+  border-radius: 5px;
+  top: 530px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadein 1s ease-in-out;
+  white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+  z-index: 1;
+}
+
+#btnPopUp2{
+  background-color: transparent;
+  width: 215px;
+  color: purple;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  border-radius: 12px;
+  margin-left: 2%;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+}
+
+#btnPopUp2:hover{
+  background-color: rgba(223, 0, 223, 0.308);
+}
+
+#btnPopUp2:hover::before {
+  content: "Variáveis de impressão de contrato, valor médio do contrato, entre outras!"; /* Texto que será mostrado ao fazer hover */
+  position: absolute;
+  color: rgb(136, 9, 125);
+  border-radius: 5px;
+  top: 530px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadein 1s ease-in-out;
+  white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+  z-index: 1;
+}
+
+#btnPopUp3{
+  background-color: transparent;
+  width: 215px;
+  color: purple;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  border-radius: 12px;
+  margin-left: 2%;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+}
+
+#btnPopUp3:hover{
+  background-color: rgba(223, 0, 223, 0.308);
+}
+
+#btnPopUp3:hover::before {
+  content: "Formulário para relatar bugs, sugerir recursos e trazer feedbacks! Clique no botão 'Google Forms'."; /* Texto que será mostrado ao fazer hover */
+  position: absolute;
+  color: rgb(136, 9, 125);
+  border-radius: 5px;
+  top: 530px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadein 1s ease-in-out;
+  white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+  z-index: 1;
+}
+
+
   #mensagemCopia{
     font-family: 'Montserrat', sans-serif;
     font-weight: 1000;

@@ -6,6 +6,25 @@ var returnBtn = document.getElementById("returnBtn");
 var firstFileAdded = false; // Flag para rastrear se o primeiro arquivo foi adicionado
 
 
+if(!localStorage.getItem('popupShown')){
+  const background = document.getElementById("background");
+  const popup = document.getElementById("popup");
+  background.style.display = "flex"
+  popup.style.display = "flex"
+  localStorage.setItem('popupShown', true)
+} 
+else{
+  alert('ja entrou aqui')
+}
+
+function fechaPopUp(){
+  const background = document.getElementById("background");
+  const popup = document.getElementById("popup");
+  background.style.display = "none"
+  popup.style.display = "none"
+}
+
+
 function copiarTexto(texto) {
   // Cria um elemento de input dinamicamente
   var inputTemporario = document.createElement("input");
