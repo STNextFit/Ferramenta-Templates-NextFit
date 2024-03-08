@@ -1936,9 +1936,9 @@ function verificarTexto() {
     outputDiv.style.width = "inherit"
     outputDiv.style.left  = "500px"
     outputDiv.innerHTML +=
-      '<span class="success">Nenhum erro encontrado.\nO texto está correto!</span>';
+      '<span class="purple">Nenhum erro encontrado.\nO texto está correto!</span>';
     const divContainer = document.getElementById("btnDownloadContainer");
-    divContainer.innerHTML += `    <button onclick="downloadDocx()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnDownload" style="display: none;">Baixar DOCX</button>`;
+    divContainer.innerHTML += `    <button onclick="downloadDocx()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnDownload" style="display: none;"><i class="fa-regular fa-file-word" id="icon4"></i>BAIXAR TEMPLATE</button>`;
     const lineNumbers = document.getElementById("lineNumbers");
     lineNumbers.style.top = "45.8%";
     const loaderContainer = document.getElementById("loaderContainer");

@@ -10,6 +10,7 @@
   <link rel="shortcut icon" href="/arquivos/logo nextfit.png" />
   <script type="text/javascript" src="tinymce/tinymce.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://kit.fontawesome.com/a366e9213f.js" crossorigin="anonymous"></script>
   <title>Ferramenta de Templates</title>
 </head>
 <body>
@@ -39,9 +40,9 @@
     </div>    
   <div class="container mt-5 text-center" id="container" >
     <input type="file" id="fileInput" class="form-control w-25 mb-3 bg-success text-white" />
-    <button onclick="renderDocument()" class="btn btn-success mt-3 d-flex justify-content-start" id="btnFormat">Formatar e Editar</button>
-    <a href="https://www.loom.com/share/d7d81f995bb643f0b2ea4c05b73a4765?sid=9f4e1d55-acd1-44b1-8fb7-21a8afb7bbeb" target="_blank" id="tutorial"><button class="btn btn-danger justify-content-center align-items-center" id="howToUse">Como usar?</button></a>
-    <button onclick="clickParaVerificar()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnVerification" style="display: none;">Verificar</button>
+    <button onclick="renderDocument()" class="btn btn-success mt-3 d-flex justify-content-start" id="btnFormat"><i class="fa-regular fa-pen-to-square" id="icon1"></i>FORMATAR E EDITAR</button>
+    <a href="https://www.loom.com/share/d7d81f995bb643f0b2ea4c05b73a4765?sid=9f4e1d55-acd1-44b1-8fb7-21a8afb7bbeb" target="_blank" id="tutorial"><button class="btn btn-danger justify-content-center align-items-center" id="howToUse"><i class="fa-regular fa-circle-question" id="icon2"></i>COMO USAR?</button></a>
+    <button onclick="clickParaVerificar()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnVerification" style="display: none;"><i class="fa-solid fa-magnifying-glass" id="icon3"></i>VERIFICAR</button>
     <div id="output">
     </div>
     <div id="btnDownloadContainer"></div>
@@ -58,11 +59,11 @@
       <input type="text" placeholder="Pesquise a variável..." class="form-control" id="inputPesquisa">
     </div>
     <div id="googleForms">
-      <a href="https://forms.gle/bjCg1tCn5DRgkxHp7" target="_blank"><button id="btnForm">Google Forms</button></a>
+      <a href="https://forms.gle/bjCg1tCn5DRgkxHp7" target="_blank"><button id="btnForm"><i class="fa-regular fa-file-lines" id="icon5"></i>GOOGLE FORMS</button></a>
     </div>
     <br>
     <!--------------------------------------------------------------------------->
-    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('clientes')">Dados do Cliente <span id="arrowIconClientes" class="arrow-down">&#10095;</span></button>
+    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('clientes')">DADOS DO CLIENTE <span id="arrowIconClientes" class="arrow-down">&#10095;</span></button>
     <div class="container-clientes" id="clientesContainer">
       <button class="btn btn meusBotoes" id="clienteNome" onclick="copiarTexto('<<[NomeCliente]>>')" data-mensagem="Exemplo de uso: Fulano da Silva">Nome do cliente</button>
       <button class="btn btn meusBotoes" id="clienteCpf" onclick="copiarTexto('<<[CpfCliente]>>')" data-mensagem="Exemplo de uso: 187.553.560-87">CPF do cliente</button>
@@ -80,9 +81,9 @@
       <button class="btn btn meusBotoes" id="clienteUF" onclick="copiarTexto('<<[UfCliente]>>')" data-mensagem="Exemplo de uso: SC">UF do cliente</button>
     </div>
     <br>
-    <hr>
+    <hr class="hr-purple">
     <!--------------------------------------------------------------------------->
-    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('empresa')">Dados da Empresa <span id="arrowIconEmpresa" class="arrow-down">&#10095;</span></button>
+    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('empresa')">DADOS DA EMPRESA <span id="arrowIconEmpresa" class="arrow-down">&#10095;</span></button>
     <div class="container-empresa" id="empresaContainer">
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[RazaoSocialFilial]>>')" data-mensagem="Exemplo de uso: Academia de Musculação Fitastic LTDA">Razão social da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NomeFantasiaFilial]>>')" data-mensagem="Exemplo de uso: Fitastic Academia">Nome fantasia da empresa</button>
@@ -99,9 +100,9 @@
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[UfFilial]>>')" data-mensagem="Exemplo de uso: SC">UF da empresa</button>
     </div>
     <br>
-    <hr>
+    <hr class="hr-purple">
     <!--------------------------------------------------------------------------->
-    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('contrato')">Dados do Contrato <span id="arrowIconContrato" class="arrow-down">&#10095;</span></button>
+    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('contrato')">DADOS DE CONTRATO <span id="arrowIconContrato" class="arrow-down">&#10095;</span></button>
     <div class="container-contrato" id="contratoContainer">
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DescricaoContrato]>>')" data-mensagem="Exemplo de uso: Musculação 3x semana">Descrição do contrato</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DuracaoContrato]>>')" data-mensagem="Exemplo de uso: 12 meses">Duração do contrato</button>
@@ -127,9 +128,9 @@
     </div>
 
     <br>
-    <hr>
+    <hr class="hr-purple">
     <!--------------------------------------------------------------------------->
-    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('responsavel')">Dados do Responsável <span id="arrowIronResponsavel" class="arrow-down">&#10095;</span></button>
+    <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('responsavel')">DADOS DO RESPONSÁVEL <span id="arrowIronResponsavel" class="arrow-down">&#10095;</span></button>
     <div class="container-responsavel" id="responsavelContainer">
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[TemResponsavel]>>')" data-mensagem="Exemplo de uso: Informa '1' para sim e '0' para não.">Cliente tem responsável?</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NomeResponsavel]>>')" data-mensagem="Exemplo de uso: Fulano da Silva">Nome do responsável</button>
@@ -150,10 +151,9 @@
     </div>
 
     <br>
-    <hr>
+    <hr class="hr-purple">
     <!--------------------------------------------------------------------------->
-    <button class="btn btn-dark d-flex justify-content-center" id="variaveisDropdownClientes" onclick="mostrarSubMenuEstrutura('estrutura');">Personalização <span id="arrowIconEstrutura" class="arrow-down">&#10095;</span></button>
-    <a href="https://www.loom.com/share/d7d81f995bb643f0b2ea4c05b73a4765?sid=9f4e1d55-acd1-44b1-8fb7-21a8afb7bbeb" target="_blank"><button class="btn btn-dark d-flex justify-content-center" id="howToPersonalize">❓</button></a>
+    <button class="btn btn-dark d-flex justify-content-center" id="variaveisDropdownClientes" onclick="mostrarSubMenuEstrutura('estrutura');">PERSONALIZAÇÃO <span id="arrowIconEstrutura" class="arrow-down">&#10095;</span></button>
     <div class="container-estrutura" id="estruturaContainer">
       <button id="btnListagem" class="btn btn meusBotoes" onclick="mostrarListagem()" data-mensagem="Estruturas de repetição">Listagem de modalidade <span id="arrowIconListagem" class="arrow-down2">&#10095;</span></button>
       <br>

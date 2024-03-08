@@ -1,7 +1,42 @@
 body {
     margin: 0;
-    background-color: rgba(128, 128, 128, 0.397);
+    background: rgb(114,0,195);
+    background: linear-gradient(7deg, rgb(153, 101, 190) 0%, rgba(255,255,255,1) 100%);
     overflow-x: hidden;
+  }
+
+  #icon1{
+    margin-right: 10px;
+    margin-left: -15px;
+    color: green;
+  }
+
+  #icon2{
+    margin-right: 10px;
+    margin-left: -25px;
+    color: rgb(113, 0, 128);
+  }
+
+  #icon3{
+    margin-right: 10px;
+    margin-left: -20px;
+    color: rgb(0, 163, 168);
+  }
+
+  #icon4{
+    margin-right: 10px;
+    margin-left: -5Px;
+    color: rgb(0, 42, 134);
+  }
+
+  #icon5{
+    margin-right: 10px;
+    margin-left: -5Px;
+    color: rgb(0, 42, 134);
+  }
+
+  #tutorial{
+    text-decoration: none;
   }
 
   #lineNumbers {
@@ -93,6 +128,10 @@ body {
   margin-top: -5%;
   display: flex;
   flex-direction: row;
+}
+
+.purple{
+  color: #630070;
 }
 
 #btnPopUp1{
@@ -313,7 +352,18 @@ body {
   height: 50px;
   align-items: center;
   padding-left: 2.5%;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: rgb(0, 134, 0);
+  font-size: 13.5px;
 }
+
+#btnFormat:hover{
+  background-color: rgba(0, 226, 0, 0.274);
+}
+
+
 
 
 #btnDownload{
@@ -325,21 +375,62 @@ body {
   animation: fade 1s ease-in-out;
 }
 
+#btnDownload{
+  width: 15%;
+  height: 50px;
+  align-items: center;
+  padding-left: 2.5%;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: rgb(0, 42, 134);
+  font-size: 13.5px;
+}
+
+#btnDownload:hover{
+  background-color: rgba(0, 23, 226, 0.274);
+}
+
+
 #btnVerification{
   width: 15%;
   height: 50px;
   align-items: center;
-  padding-left: 5%;
-  margin-bottom: 20px ;
-}
-
-#howToUse{
-  margin-top: 20px;
-  width: 15%;
-  height: 50px;
   justify-content: start;
   display: flex;
   margin-bottom: 20px;
+  padding-left: 5%;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: rgb(0, 163, 168);
+  font-size: 13.5px;
+}
+
+#btnVerification:hover{
+  background-color: rgba(0, 186, 192, 0.322);
+}
+
+
+#howToUse{
+  width: 15%;
+  height: 50px;
+  margin-top: 20px;
+  justify-content: start;
+  align-items: center;
+  justify-content: start;
+  display: flex;
+  margin-bottom: 10px;
+  padding-left: 2.5%;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: rgb(129, 0, 134);
+  font-size: 13.5px;
+}
+
+#howToUse:hover{
+  background-color: rgba(226, 0, 215, 0.274);
 }
 
 @keyframes fade{
@@ -576,10 +667,14 @@ body {
   margin-left: 25%;
   height: 50px;
   position: relative;
+  background-color: transparent;
+  border: none;
+  color: purple;
+  font-weight: bold;
 }
 
 #variaveisDropdownClientes:hover{
-  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.466);
+  background-color: rgba(189, 0, 189, 0.377);
 }
 
 #howToPersonalize{
@@ -972,22 +1067,32 @@ hr{
   margin-right: auto;
 }
 
+
+
 #btnForm{
-  width: 20%;
-  padding-left: 15px;
-  margin-left: 40%;
   margin-bottom: -20px;
-  text-decoration: none;
-  color: white;
+  margin-top: 30px;
+  width: 25%;
+  padding-left: 15px;
   height: 50px;
-  display: flex;
-  position: relative;
-  background-color: rgb(0, 111, 131);
+  margin-left: 37.5%;
+  text-decoration: none;
+  align-items: center;
+  padding-left: 2.5%;
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
+  font-weight: bold;
+  color: rgb(0, 13, 134);
+  font-size: 13.5px;
   transition: 0.3s;
+  border-radius: 5px;
 }
 
 #btnForm:hover{
-  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.466);
+  background-color: rgba(0, 34, 226, 0.274);
+}
+
+.hr-purple{
+  color: purple;
+
 }
