@@ -586,6 +586,10 @@ function verificarTexto() {
   const REGEX5 = /<<foreach \[parcela in Parcelas]>>([\s\S]*?)<<\/foreach>>/g;
   const REGEX6 = /<<foreach \[gradeHorario in modalidade.GradeHorarios]>>([\s\S]*?)<<\/foreach>>/g;
   const REGEX7 = /<<if \[modalidade.TemGradeHorarios > 0]>>([\s\S]*?)<<\/if>>/g;
+  const REGEX8 = /<<if \[modalidade.Tipo == 1]>>([\s\S]*?)<<\/if>>/g;
+  const REGEX9 = /<<if \[modalidade.Tipo == 2]>>([\s\S]*?)<<\/if>>/g;
+  const REGEX10 = /<<if \[modalidade.Tipo == 3]>>([\s\S]*?)<<\/if>>/g;
+
 
   const textoSemNada = textoSemVariaveis
     .replace(/<<if \[ValorAdesao > 0]>>([\s\S]*?)<<\/if>>/g, "")
@@ -594,7 +598,10 @@ function verificarTexto() {
     .replace(/<<foreach \[modalidade in Modalidades]>>([\s\S]*?)<<\/foreach>>/g, "")
     .replace(/<<foreach \[parcela in Parcelas]>>([\s\S]*?)<<\/foreach>>/g, "")
     .replace(/<<foreach \[gradeHorario in modalidade.GradeHorarios]>>([\s\S]*?)<<\/foreach>>/g)
-    .replace(/<<if \[modalidade.TemGradeHorarios > 0]>>([\s\S]*?)<<\/if>>/g);
+    .replace(/<<if \[modalidade.TemGradeHorarios > 0]>>([\s\S]*?)<<\/if>>/g)
+    .replace(/<<if \[modalidade.Tipo == 1]>>([\s\S]*?)<<\/if>>/g)
+    .replace(/<<if \[modalidade.Tipo == 2]>>([\s\S]*?)<<\/if>>/g)
+    .replace(/<<if \[modalidade.Tipo == 3]>>([\s\S]*?)<<\/if>>/g);
 
   const semPTags = textoSemNada.replace(/<p>/g, "");
   const semPTagsFinal = semPTags.replace(/<\/?p>/g, "");
@@ -619,10 +626,14 @@ function verificarTexto() {
   const matches5 = REGEX5.exec(textoSemVariaveis);
   const matches6 = REGEX6.exec(textoSemVariaveis);
   const matches7 = REGEX7.exec(textoSemVariaveis);
+  const matches8 = REGEX8.exec(textoSemVariaveis);
+  const matches9 = REGEX9.exec(textoSemVariaveis);
+  const matches10 = REGEX10.exec(textoSemVariaveis);
+
   console.log("Texto sem variáveis: \n" + textoSemVariaveis)
   console.log(matches);
   let conteudoDentroDoIf = "";
-  if (matches || matches2 || matches3 || matches4 || matches5 || matches6 || matches7) {
+  if (matches || matches2 || matches3 || matches4 || matches5 || matches6 || matches7 || matches8 || matches9 || matches10) {
     console.log("Entrou nos matches");
     if (matches) conteudoDentroDoIf += matches[1] || "";
     if (matches2) conteudoDentroDoIf += matches2[1] || "";
@@ -631,6 +642,10 @@ function verificarTexto() {
     if (matches5) conteudoDentroDoIf += matches5[1] || "";
     if (matches6) conteudoDentroDoIf += matches6[1] || "";
     if (matches7) conteudoDentroDoIf += matches7[1] || "";
+    if (matches8) conteudoDentroDoIf += matches8[1] || "";
+    if (matches9) conteudoDentroDoIf += matches9[1] || "";
+    if (matches10) conteudoDentroDoIf += matches10[1] || "";
+
 
 
     conteudoDentroDoIf = conteudoDentroDoIf
@@ -2097,7 +2112,7 @@ function copiarEstruturaTipos() {
   <</if>><<if [modalidade.Tipo == 2] >>
   Agenda sessões por semana
     • <<[modalidade.DescricaoModalidade]>> 
-      ◦ <<[modalidade. QtdeSessoesPorSemana]>> sessões por semana
+      ◦ <<[modalidade.QtdeSessoesPorSemana]>> sessões por semana
       ◦ Horários agendados: <<foreach [gradeHorario in modalidade.GradeHorarios]>><<[gradeHorario.DiaDaSemana]>> das <<[gradeHorario.HorarioInicial]>> as <<[gradeHorario.HorarioFinal]>>; <</foreach>>
   <</if>> <<if [modalidade.Tipo == 3] >>
   Agenda pacote
