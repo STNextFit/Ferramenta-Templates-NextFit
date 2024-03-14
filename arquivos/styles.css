@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background: rgb(114,0,195);
-    background: linear-gradient(7deg, rgb(153, 101, 190) 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(7deg, rgb(153, 101, 190) 60%, rgba(255,255,255,1) 100%);
     overflow-x: hidden;
   }
 
@@ -35,9 +35,67 @@ body {
     color: rgb(0, 42, 134);
   }
 
+  .rowling{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #icon6{
+    margin-right: 10px;
+    margin-left: -5Px;
+    color: rgb(16, 104, 4);   
+    margin-top: 10px;
+    margin-left:  10px;
+    scale: calc(1.05);
+    animation: fadein 0.4s ease-in-out;
+  }
+
   #tutorial{
     text-decoration: none;
   }
+
+  #fileInput{
+    width: 370px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: purple;
+    font-weight: 600;
+    border-radius: 50px;
+  }
+
+  input[type='file'] {
+    display: none
+  }
+
+  label {
+    padding-left: 25px;
+    height: 50px;
+    color: #FFF;
+    text-transform: uppercase;
+    display: flex;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 15%;
+    align-items: center;
+    border: none;
+    font-weight: bold;
+    color: rgb(134, 0, 112);
+    font-size: 13.5px;
+    transition: 0.4s ease-in-out;
+}
+
+ label:hover{
+  background-color: #63007059;
+ }
+
+ #icon0{
+  margin-right: 12px;
+  margin-left: -15px;
+  color: rgb(134, 0, 112);
+ }
 
   #lineNumbers {
     position: absolute;
@@ -360,7 +418,7 @@ body {
 }
 
 #btnFormat:hover{
-  background-color: rgba(0, 226, 0, 0.274);
+  background-color: rgba(0, 233, 0, 0.274);
 }
 
 
@@ -408,7 +466,7 @@ body {
 }
 
 #btnVerification:hover{
-  background-color: rgba(0, 186, 192, 0.322);
+  background-color: rgba(0, 210, 218, 0.192);
 }
 
 
@@ -1094,5 +1152,18 @@ hr{
 
 .hr-purple{
   color: purple;
+
+}
+
+
+
+@media only screen and (max-width: 1760px) {
+  .variables-container{
+     width: 550px;
+  }
+
+  #searchCamp{
+    width: 350px;
+  }
 
 }

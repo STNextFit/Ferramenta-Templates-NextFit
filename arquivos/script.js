@@ -21,6 +21,19 @@ function fechaPopUp(){
   popup.style.display = "none"
 }
 
+function showIcon(){
+  const fileInput = document.getElementById('fileInput');
+
+  if (fileInput.files.length > 0){
+    const icon6 = document.getElementById('icon6');
+    icon6.style.display = "flex";
+  }
+  else {
+    console.log("Acontece nada")
+  }
+
+}
+
 
 function copiarTexto(texto) {
   // Cria um elemento de input dinamicamente
@@ -273,10 +286,15 @@ function removeFile() {
   const mensagemDeErro = document.getElementById("mensagemDeErro");
   mensagemDeErro.style.display = "none";
   const button = document.getElementById("btnDownload");
-  button.style.display = "none";
+  if(button){
+    button.style.display = "none";
+  }
 
+  const icon6 = document.getElementById('icon6');
+  icon6.style.display = "none";
   // Reinicia a flag para permitir que outro arquivo seja adicionado
   firstFileAdded = false;
+  console.log(firstFileAdded);
 }
 
 function closeContainer() {

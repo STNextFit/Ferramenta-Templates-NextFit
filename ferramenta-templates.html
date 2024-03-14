@@ -39,7 +39,11 @@
         </div>
     </div>    
   <div class="container mt-5 text-center" id="container" >
-    <input type="file" id="fileInput" class="form-control w-25 mb-3 bg-success text-white" />
+    <div class="rowling">
+      <label for="fileInput"><i class="fa-solid fa-file-import" id="icon0"></i>Selecionar arquivo</label>
+      <input type="file" id="fileInput" name="fileInput" onchange="showIcon()"/>
+      <i class="fa-solid fa-circle-check" id="icon6" style="display: none;"></i>
+    </div>
     <button onclick="renderDocument()" class="btn btn-success mt-3 d-flex justify-content-start" id="btnFormat"><i class="fa-regular fa-pen-to-square" id="icon1"></i>FORMATAR E EDITAR</button>
     <a href="https://www.loom.com/share/d7d81f995bb643f0b2ea4c05b73a4765?sid=9f4e1d55-acd1-44b1-8fb7-21a8afb7bbeb" target="_blank" id="tutorial"><button class="btn btn-danger justify-content-center align-items-center" id="howToUse"><i class="fa-regular fa-circle-question" id="icon2"></i>COMO USAR?</button></a>
     <button onclick="clickParaVerificar()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnVerification" style="display: none;"><i class="fa-solid fa-magnifying-glass" id="icon3"></i>VERIFICAR</button>
