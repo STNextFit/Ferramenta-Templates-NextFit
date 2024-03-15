@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background: rgb(114,0,195);
-    background: linear-gradient(7deg, rgb(153, 101, 190) 60%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(7deg, rgb(153, 101, 190) 35%, rgba(255,255,255,1) 100%);
     overflow-x: hidden;
   }
 
@@ -20,7 +20,7 @@ body {
   #icon3{
     margin-right: 10px;
     margin-left: -20px;
-    color: rgb(0, 163, 168);
+    color: rgb(134, 0, 112);
   }
 
   #icon4{
@@ -69,7 +69,7 @@ body {
     display: none
   }
 
-  label {
+  #labelInput {
     padding-left: 25px;
     height: 50px;
     color: #FFF;
@@ -82,19 +82,19 @@ body {
     align-items: center;
     border: none;
     font-weight: bold;
-    color: rgb(134, 0, 112);
+    color: rgb(0, 163, 168);
     font-size: 13.5px;
     transition: 0.4s ease-in-out;
 }
 
  label:hover{
-  background-color: #63007059;
+  background-color: rgba(0, 210, 218, 0.192);
  }
 
  #icon0{
   margin-right: 12px;
   margin-left: -15px;
-  color: rgb(134, 0, 112);
+  color: rgb(0, 163, 168);
  }
 
   #lineNumbers {
@@ -461,12 +461,12 @@ body {
   background-color: transparent;
   border: none;
   font-weight: bold;
-  color: rgb(0, 163, 168);
+  color: rgb(134, 0, 112);
   font-size: 13.5px;
 }
 
 #btnVerification:hover{
-  background-color: rgba(0, 210, 218, 0.192);
+  background-color: #63007059;
 }
 
 
