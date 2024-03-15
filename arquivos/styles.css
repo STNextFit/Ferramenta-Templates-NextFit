@@ -1151,8 +1151,9 @@ hr{
 }
 
 .hr-purple{
+  background-color: purple;
   color: purple;
-
+  border: 1px solid purple
 }
 
 
