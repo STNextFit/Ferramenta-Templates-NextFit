@@ -41,7 +41,7 @@
   <div class="container mt-5 text-center" id="container" >
     <div class="rowling">
       <label for="fileInput"><i class="fa-solid fa-file-import" id="icon0"></i>Selecionar arquivo</label>
-      <input type="file" id="fileInput" name="fileInput" onchange="showIcon()"/>
+      <input type="file" id="fileInput" name="fileInput" onchange="showIcon()" accept=".docx, .doc"/>
       <i class="fa-solid fa-circle-check" id="icon6" style="display: none;"></i>
     </div>
     <button onclick="renderDocument()" class="btn btn-success mt-3 d-flex justify-content-start" id="btnFormat"><i class="fa-regular fa-pen-to-square" id="icon1"></i>FORMATAR E EDITAR</button>
