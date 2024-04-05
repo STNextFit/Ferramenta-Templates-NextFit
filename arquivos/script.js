@@ -2137,9 +2137,11 @@ function copiarEstruturaForeach() {
 }
 
 function copiarEstruturaResponsavel() {
-  var textoEstrutura = `RESPONSÁVEL: <<[NomeResponsavel]>>, RG nº <<[RgResponsavel]>>, CPF nª <<[CpfResponsavel]>>, residente e domiciliado no endereço <<[EnderecoResponsavel]>>, nº <<[NumeroEnderecoResponsavel]>>, bairro <<[BairroResponsavel]>>, CEP <<[CepResponsavel]>> na cidade de <<[CidadeResponsavel]>> - <<[UfResponsavel]>>.`;
+  var textoEstrutura = `<<if [TemResponsavel > 0]>>
+  RESPONSÁVEL: <<[NomeResponsavel]>>, RG nº <<[RgResponsavel]>>, CPF nª <<[CpfResponsavel]>>, residente e domiciliado no endereço <<[EnderecoResponsavel]>>, nº <<[NumeroEnderecoResponsavel]>>, bairro <<[BairroResponsavel]>>, CEP <<[CepResponsavel]>> na cidade de <<[CidadeResponsavel]>> - <<[UfResponsavel]>>.
+<</if>>`;
 
-  // Cria um elemento <textarea> dinamicamente
+  // Cria um elemento <textarea> dinamiccamente
   var inputTemporario = document.createElement("textarea");
 
   // Define o valor do texto no elemento <textarea> para preservar a formatação
