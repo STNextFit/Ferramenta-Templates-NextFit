@@ -2136,6 +2136,46 @@ function copiarEstruturaForeach() {
   }, 4000);
 }
 
+function copiarEstruturaResponsavel() {
+  var textoEstrutura = `RESPONSÁVEL: <<[NomeResponsavel]>>, RG nº <<[RgResponsavel]>>, CPF nª <<[CpfResponsavel]>>, residente e domiciliado no endereço <<[EnderecoResponsavel]>>, nº <<[NumeroEnderecoResponsavel]>>, bairro <<[BairroResponsavel]>>, CEP <<[CepResponsavel]>> na cidade de <<[CidadeResponsavel]>> - <<[UfResponsavel]>>.`;
+
+  // Cria um elemento <textarea> dinamicamente
+  var inputTemporario = document.createElement("textarea");
+
+  // Define o valor do texto no elemento <textarea> para preservar a formatação
+  inputTemporario.value = textoEstrutura;
+
+  // Adiciona o elemento <textarea> ao corpo do documento
+  document.body.appendChild(inputTemporario);
+
+  // Seleciona o texto no elemento de input
+  inputTemporario.select();
+  inputTemporario.setSelectionRange(0, 99999); // Para dispositivos móveis
+
+  // Copia o texto para a área de transferência
+  document.execCommand("copy");
+
+  // Remove o elemento de input temporário
+  document.body.removeChild(inputTemporario);
+
+  // Exibe uma mensagem indicando que o texto foi copiado
+  const copiedElement = document.createElement("div");
+  copiedElement.innerHTML = `<div class="copied-text">
+      <button id="closeAction">OK</button>
+      Texto copiado!</div>`;
+  const recebeAction = document.getElementById("recebeAction");
+  recebeAction.innerHTML = "";
+  recebeAction.appendChild(copiedElement);
+  const closeAction = document.getElementById("closeAction");
+  closeAction.addEventListener("click", function () {
+    recebeAction.innerHTML = "";
+  });
+
+  setTimeout(function () {
+    recebeAction.removeChild(copiedElement);
+  }, 4000);
+}
+
 function copiarEstruturaTipos() {
   var textoEstrutura = `<<foreach [modalidade in Modalidades]>><<if [modalidade.Tipo == 1] >>
   Padrão
