@@ -6,13 +6,17 @@ var returnBtn = document.getElementById("returnBtn");
 var firstFileAdded = false; // Flag para rastrear se o primeiro arquivo foi adicionado
 
 
-if(!localStorage.getItem('popupShown')){
+if(!localStorage.getItem('popupShown2')){
   const background = document.getElementById("background");
   const popup = document.getElementById("popup");
   background.style.display = "flex"
   popup.style.display = "flex"
-  localStorage.setItem('popupShown', true)
-} 
+  localStorage.setItem('popupShown2', true);
+}
+
+if(localStorage.getItem('popupShown')){
+  localStorage.removeItem('popupShown')
+}
 
 function fechaPopUp(){
   const background = document.getElementById("background");
@@ -224,21 +228,21 @@ function renderDocument() {
     var mammothOptions = {};
 
     mammoth
-      .extractRawText({ arrayBuffer: arrayBuffer })
+      .convertToHtml({ arrayBuffer: arrayBuffer })
       .then(function (result) {
         formattedContent = result.value; // Salva o conteúdo na variável global
         const arquivo = document.createElement("p");
-        arquivo.innerText = formattedContent;
         const editor = tinymce.get("editor");
-        console.log(formattedContent);
-        let conteudoFormatado = formattedContent
-          .replace(/</g, "&lt")
-          .replace(/>/g, "&gt");
-        conteudoFormatado = conteudoFormatado
-          .split("\n")
-          .map((para) => `<p>${para}</p>`)
-          .join("");
-        editor.setContent(conteudoFormatado, { format: "raw" });
+        editor.setContent(result.value);
+        console.log("Primeiro texto enviado:\n" + formattedContent);
+        //let conteudoFormatado = formattedContent
+          //.replace(/</g, "&lt")
+          //.replace(/>/g, "&gt");
+        //conteudoFormatado = conteudoFormatado
+          //.split("\n")
+          //.map((para) => `<p>${para}</p>`)
+          //.join("");
+        
 
         // Ativa o botão de remoção
         removeBtn.style.display = "inline";
@@ -257,7 +261,6 @@ function formatAndEditDocument() {
   const arquivo = document.createElement("p");
   arquivo.innerText = formattedContent;
   const editor = tinymce.get("editor");
-  console.log(formattedContent);
   let conteudoFormatado = formattedContent
     .replace(/</g, "&lt")
     .replace(/>/g, "&gt");
@@ -294,7 +297,6 @@ function removeFile() {
   icon6.style.display = "none";
   // Reinicia a flag para permitir que outro arquivo seja adicionado
   firstFileAdded = false;
-  console.log(firstFileAdded);
 }
 
 function closeContainer() {
@@ -303,7 +305,6 @@ function closeContainer() {
 }
 
 function downloadDocx() {
-  console.log("entrou");
   const editor = tinymce.get("editor");
   const editedContent = editor.getContent();
   var regex = /<<\[.*\]>>/;
@@ -557,7 +558,6 @@ function verificarTexto() {
         const copyButtons = document.querySelectorAll(".copy-button");
         copyButtons.forEach(function (button) {
           button.addEventListener("click", function () {
-            console.log("Copiou!!!");
             const variavel = this.previousElementSibling.textContent.trim();
             copyToClipboard(variavel);
             button.textContent = "Copiado!";
@@ -588,7 +588,6 @@ function verificarTexto() {
         }
         return;
       } else {
-        console.log("Está errado e não tem sugestão de correção.");
         outputDiv.style.backgroundColor = "white";
         outputDiv.style.padding = "15px";
         outputDiv.style.borderRadius = "7px";
@@ -637,22 +636,47 @@ function verificarTexto() {
     .replace(/<<if \[modalidade.Tipo == 2]>>([\s\S]*?)<<\/if>>/g)
     .replace(/<<if \[modalidade.Tipo == 3]>>([\s\S]*?)<<\/if>>/g);
 
-  const semPTags = textoSemNada.replace(/<p>/g, "");
-  const semPTagsFinal = semPTags.replace(/<\/?p>/g, "");
-  const semPTagsFinal15 = semPTagsFinal.replace(
+  const semPTags = textoSemNada
+  .replace(/<p>/g, "")
+  .replace(/<\/?p>/g, "")
+  .replace(
     /<span\s+style="color:\s*red;">/g,
     ""
-  );
-  const semPTagsFinal17 = semPTagsFinal15.replace(/<\/span>/g, "");
-  const semPTagsFinal18 = semPTagsFinal17.replace(
+  )
+  .replace(/<\/span>/g, "")
+  .replace(
     /<span\s+style="color:\s*black;">/g,
     ""
-  );
-  const semPTagsFinal2 = semPTagsFinal18.replace(/<br>/g, "");
-  console.log("Texto final: " + semPTagsFinal2);
+  )
+  .replace(/<br[^>]*>/g, "")
+  .replace(/<ol[^>]*>/g, "")
+  .replace(/<li style="color: black;">/g, "")
+  .replace(/<\/li>/g, "")
+  .replace(/<\/ol>/g, "")
+  .replace(/<strong[^>]*>/g, "")
+  .replace(/<\/strong>/g, "")
+  .replace(/<ul[^>]*>/g, "")
+  .replace(/<\/ul>/g, "")
+  .replace(/<table[^>]*>/g, "")
+  .replace(/<tbody[^>]*>/g, "")
+  .replace(/<tr[^>]*>/g, "")
+  .replace(/<td[^>]*>/g, "")
+  .replace(/<\/td>/g, "")
+  .replace(/<\/tr>/g, "")
+  .replace(/<\/tbody>/g, "")
+  .replace(/<\/table>/g, "")
+  .replace(/<li>/g, "")
+  .replace(/<em[^>]*>/g,"")
+  .replace(/<img[^>]*>/g, "")
+  .replace(/<sup[^>]*>/g, "")
+  .replace(/<\/sup>/g, "")
+  .replace(/<\/em>/g, "")
+  .replace(/<a[^>]*>/g, "")
+  .replace(/<\/a>/g, "")
+  
+  console.log("\n\n\n\nTexto final: \n" + semPTags);
   const regexx = /<<\[/;
   let conteudoDentroDoIf2 = "";
-  let conteudoDentroDoForeach2 = ""
   const matches = REGEX.exec(textoSemVariaveis);
   const matches2 = REGEX2.exec(textoSemVariaveis);
   const matches3 = REGEX3.exec(textoSemVariaveis);
@@ -682,19 +706,43 @@ function verificarTexto() {
 
 
 
-    conteudoDentroDoIf = conteudoDentroDoIf
-      .replace(/(<<\[([^>\s]+)]>>)/g, "")
-      .replace(/<p>/g, "")
-      .replace(/<\/?p>/g, "")
-      .replace(/<span\s+style="color:\s*red;">/g, "")
-      .replace(/<\/span>/g, "")
-      .replace(/<span\s+style="color:\s*black;">/g, "")
-      .replace(/<br>/g, "");
+    var conteudoDentroDoIfSemTags = conteudoDentroDoIf
+    .replace(/<p>/g, "")
+    .replace(/<\/?p>/g, "")
+    .replace(
+      /<span\s+style="color:\s*red;">/g,
+      ""
+    )
+    .replace(/<\/span>/g, "")
+    .replace(
+      /<span\s+style="color:\s*black;">/g,
+      ""
+    )
+    .replace(/<br>/g, "")
+    .replace(/<ol>/g, "")
+    .replace(/<li style="color: black;">/g, "")
+    .replace(/<\/li>/g, "")
+    .replace(/<\/ol>/g, "")
+    .replace(/<strong>/g, "")
+    .replace(/<\/strong>/g, "")
+    .replace(/<ul>/g, "")
+    .replace(/<\/ul>/g, "")
+    .replace(/<table>/g, "")
+    .replace(/<tbody>/g, "")
+    .replace(/<tr>/g, "")
+    .replace(/<td[^>]>/g, "")
+    .replace(/<\/td>/g, "")
+    .replace(/<\/tr>/g, "")
+    .replace(/<\/tbody>/g, "")
+    .replace(/<\/table>/g, "")
+    .replace(/<li>/g, "")
+    .replace(/<em>/g,"")
+    .replace(/<img[^>]*>/g, "")
 
-    console.log("Conteudo if: \n" + conteudoDentroDoIf);
+    console.log("Conteudo if: \n" + conteudoDentroDoIfSemTags);
   }
-  const conteudoCompleto = `${semPTagsFinal2} ${conteudoDentroDoIf}`;
-  console.log("SemPTagsFinal2: \n" + semPTagsFinal2)
+  const conteudoCompleto = `${semPTags} ${conteudoDentroDoIfSemTags}`;
+  console.log("semPTags: \n" + semPTags)
   console.log("Conteudo inteiro: \n" + conteudoCompleto);
 
   if (

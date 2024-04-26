@@ -210,7 +210,7 @@ body {
 }
 
 #btnPopUp1:hover::before {
-  content: "Copie estruturas prontas para verificação do tipo de modalidade e amostragem de grade de horários!"; /* Texto que será mostrado ao fazer hover */
+  content: "Formate arquivos de forma fidedigna ao arquivo DOCX original, incluindo imagens, tabelas, entre outros componentes."; /* Texto que será mostrado ao fazer hover */
   position: absolute;
   color: rgb(136, 9, 125);
   border-radius: 5px;
@@ -240,7 +240,7 @@ body {
 }
 
 #btnPopUp2:hover::before {
-  content: "Variáveis de impressão de contrato, valor médio do contrato, entre outras!"; /* Texto que será mostrado ao fazer hover */
+  content: "Novas estruturas para responsável financeiro, empresa e cliente!"; /* Texto que será mostrado ao fazer hover */
   position: absolute;
   color: rgb(136, 9, 125);
   border-radius: 5px;
@@ -270,7 +270,7 @@ body {
 }
 
 #btnPopUp3:hover::before {
-  content: "Formulário para relatar bugs, sugerir recursos e trazer feedbacks! Clique no botão 'Google Forms'."; /* Texto que será mostrado ao fazer hover */
+  content: "Correção de bugs de verificação e formatação."; /* Texto que será mostrado ao fazer hover */
   position: absolute;
   color: rgb(136, 9, 125);
   border-radius: 5px;
