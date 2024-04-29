@@ -1172,7 +1172,7 @@ hr{
 .verify-group{
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: -10px;
 }
 
 /* Estilo básico do switch */

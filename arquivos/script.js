@@ -45,6 +45,7 @@ let toggleActive = false;
     if (this.checked) {
       toggleActive = true;
       console.log("Checou")
+      clickParaVerificar();
       tinymce.activeEditor.on('keyup', clickParaVerificar);
     } else {
       // Se o checkbox não está marcado, desativa a verificação automática
