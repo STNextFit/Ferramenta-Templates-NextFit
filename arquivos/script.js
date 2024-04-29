@@ -470,6 +470,7 @@ function verificarTexto() {
     "ValorTotalContratoSemDescontoFormatado",
     "QuantMaximoSuspensoes",
     "QuantMaximoDiasSuspensao",
+    " QuantMaximoDiasSuspensao",
     "DataInicio",
     "DataValidade",
     "DataImpressao",
@@ -523,7 +524,6 @@ function verificarTexto() {
     }
 
     if (variavelCompleta !== `<<[${variavelConteudo}]>>`) {
-      console.log("Entrou no 1° if");
       // Verificar se a variável está bem formada
       outputDiv.innerHTML += `Variável <span class="error">${variavelCompleta}</span> mal formada.<br>`;
       temErros = true;
@@ -588,6 +588,7 @@ function verificarTexto() {
         }
         return;
       } else {
+        console.log("Olá," + variavelConteudo)
         outputDiv.style.backgroundColor = "white";
         outputDiv.style.padding = "15px";
         outputDiv.style.borderRadius = "7px";
@@ -778,42 +779,43 @@ function verificarTexto() {
 
     const foreachMalFormado1 = conteudoCompleto.match(/<<foreach/)
 
-    const variavelMalFormada1 = conteudoCompleto.match(/<<\[(\S+)]>/); //ok
-    const variavelMalFormada2 = conteudoCompleto.match(/<<\[(.*?)>>/); //ok
-    const variavelMalFormada3 = conteudoCompleto.match(/<<\[(.*?)>/); //ok
-    const variavelMalFormada4 = conteudoCompleto.match(/<<\[(.*?)]/); //ok
+    const excecaoMalFormada1 = conteudoCompleto.match(/<<\[ QuantMaximoDiasSuspensao]>>/)
+    const variavelMalFormada1 = conteudoCompleto.match(/<<\[(?! QuantMaximoDiasSuspensao)(\S+)]>/); //ok
+    const variavelMalFormada2 = conteudoCompleto.match(/<<\[(?! QuantMaximoDiasSuspensao)(.*?)>>/); //ok
+    const variavelMalFormada3 = conteudoCompleto.match(/<<\[(?! QuantMaximoDiasSuspensao)(.*?)>/); //ok
+    const variavelMalFormada4 = conteudoCompleto.match(/<<\[(?! QuantMaximoDiasSuspensao)(.*?)]/); //ok
 
-    const variavelMalFormada5 = conteudoCompleto.match(/<\[(.*?)]>$/); //ok
+    const variavelMalFormada5 = conteudoCompleto.match(/<\[(?! QuantMaximoDiasSuspensao)(.*?)]>$/); //ok
     const variavelMalFormada6 = conteudoCompleto.match(
-      /<\[(.*?)(?![^\[]*?])>>/
+      /<\[(?! QuantMaximoDiasSuspensao)(.*?)(?![^\[]*?])>>/
     ); //ok
-    const variavelMalFormada7 = conteudoCompleto.match(/<\[(.*?)>/); //ok
-    const variavelMalFormada8 = conteudoCompleto.match(/<\[(.*?)]/); //ok
-    const variavelMalFormada9 = conteudoCompleto.match(/<\[(.*?)]>>/); //ok
+    const variavelMalFormada7 = conteudoCompleto.match(/<\[(?! QuantMaximoDiasSuspensao)(.*?)>/); //ok
+    const variavelMalFormada8 = conteudoCompleto.match(/<\[(?! QuantMaximoDiasSuspensao)(.*?)]/); //ok
+    const variavelMalFormada9 = conteudoCompleto.match(/<\[(?! QuantMaximoDiasSuspensao)(.*?)]>>/); //ok
 
-    const variavelMalFormada10 = conteudoCompleto.match(/<<(\S+)]>(?=>|\b)$/); //ok
-    const variavelMalFormada11 = conteudoCompleto.match(/<<(.*?)>>/); //ok
-    const variavelMalFormada12 = conteudoCompleto.match(/<<(.*?)>/); //ok
-    const variavelMalFormada13 = conteudoCompleto.match(/<<(.*?)]/); //ok
-    const variavelMalFormada14 = conteudoCompleto.match(/<<(.*?)]>>/); //ok
+    const variavelMalFormada10 = conteudoCompleto.match(/<<(?! QuantMaximoDiasSuspensao)(\S+)]>(?=>|\b)$/); //ok
+    const variavelMalFormada11 = conteudoCompleto.match(/<<(?! QuantMaximoDiasSuspensao)(.*?)>>/); //ok
+    const variavelMalFormada12 = conteudoCompleto.match(/<<(?! QuantMaximoDiasSuspensao)(.*?)>/); //ok
+    const variavelMalFormada13 = conteudoCompleto.match(/<<(?! QuantMaximoDiasSuspensao)(.*?)]/); //ok
+    const variavelMalFormada14 = conteudoCompleto.match(/<<(?! QuantMaximoDiasSuspensao)(.*?)]>>/); //ok
 
-    const variavelMalFormada15 = conteudoCompleto.match(/<(\w*]>)>/); //<NomeCliente]> ok
-    const variavelMalFormada16 = conteudoCompleto.match(/<(.*?)>>/); //<NomeCliente>> ok
-    const variavelMalFormada17 = conteudoCompleto.match(/<(.*?)>/); //<NomeCliente> ok
-    const variavelMalFormada18 = conteudoCompleto.match(/<(.*?)]/); //<NomeCliente] ok
-    const variavelMalFormada19 = conteudoCompleto.match(/<(.*?)]>>/); //<NomeCliente]>> ok
+    const variavelMalFormada15 = conteudoCompleto.match(/<(?! QuantMaximoDiasSuspensao)(\w*]>)>/); //<NomeCliente]> ok
+    const variavelMalFormada16 = conteudoCompleto.match(/<(?! QuantMaximoDiasSuspensao)(.*?)>>/); //<NomeCliente>> ok
+    const variavelMalFormada17 = conteudoCompleto.match(/<(?! QuantMaximoDiasSuspensao)(.*?)>/); //<NomeCliente> ok
+    const variavelMalFormada18 = conteudoCompleto.match(/<(?! QuantMaximoDiasSuspensao)(.*?)]/); //<NomeCliente] ok
+    const variavelMalFormada19 = conteudoCompleto.match(/<(?! QuantMaximoDiasSuspensao)(.*?)]>>/); //<NomeCliente]>> ok
 
-    const variavelMalFormada20 = conteudoCompleto.match(/\[(\w+)]>(?![>])\b/); //ok
-    const variavelMalFormada21 = conteudoCompleto.match(/\[(.*?)>>/); //ok
-    const variavelMalFormada22 = conteudoCompleto.match(/\[(.*?)>/); //ok
-    const variavelMalFormada23 = conteudoCompleto.match(/\[(.*?)]/); //ok
-    const variavelMalFormada24 = conteudoCompleto.match(/\[(.*?)]>>/); //ok
+    const variavelMalFormada20 = conteudoCompleto.match(/\[(?! QuantMaximoDiasSuspensao)(\w+)]>(?![>])\b/); //ok
+    const variavelMalFormada21 = conteudoCompleto.match(/\[(?! QuantMaximoDiasSuspensao)(.*?)>>/); //ok
+    const variavelMalFormada22 = conteudoCompleto.match(/\[(?! QuantMaximoDiasSuspensao)(.*?)>/); //ok
+    const variavelMalFormada23 = conteudoCompleto.match(/\[(?! QuantMaximoDiasSuspensao)(.*?)]/); //ok
+    const variavelMalFormada24 = conteudoCompleto.match(/\[(?! QuantMaximoDiasSuspensao)(.*?)]>>/); //ok
 
-    const variavelMalFormada25 = conteudoCompleto.match(/\b\w*\](?=>)\b/); //ok
-    const variavelMalFormada26 = conteudoCompleto.match(/\b\w*\]>>\b/); //ok
-    const variavelMalFormada27 = conteudoCompleto.match(/\b\w*\b>/); //ok
-    const variavelMalFormada28 = conteudoCompleto.match(/\b\w*\](?=\W|$)/); //ok
-    const variavelMalFormada29 = conteudoCompleto.match(/\b\w*\[\w+]\b>>/); //ok
+    const variavelMalFormada25 = conteudoCompleto.match(/(?! QuantMaximoDiasSuspensao)\b\w*\](?=>)\b/); //ok
+    const variavelMalFormada26 = conteudoCompleto.match(/(?! QuantMaximoDiasSuspensao)\b\w*\]>>\b/); //ok
+    const variavelMalFormada27 = conteudoCompleto.match(/(?! QuantMaximoDiasSuspensao)\b\w*\b>/); //ok
+    const variavelMalFormada28 = conteudoCompleto.match(/(?! QuantMaximoDiasSuspensao)\b\w*\](?=\W|$)/); //ok
+    const variavelMalFormada29 = conteudoCompleto.match(/(?! QuantMaximoDiasSuspensao)\b\w*\[\w+]\b>>/); //ok
 
     const editor = tinymce.get("editor");
 
@@ -913,6 +915,10 @@ function verificarTexto() {
       `;
       outputDiv.appendChild(valorPadraoForeach);
     }
+
+    //if(excecaoMalFormada1){
+      //console.log("tá aqui!");
+    //}
     
     else if (variavelMalFormada1) {
       console.log("Variável Mal Formada 1: " + variavelMalFormada1);
@@ -967,6 +973,7 @@ function verificarTexto() {
       }
     } else if (variavelMalFormada2) {
       console.log("Variável Mal Formada 2: " + variavelMalFormada2[1]);
+      
       const purpleText = `<span style="color: purple;">${variavelMalFormada2[0]}</span>`;
       const linhaPalavraMalFormada = contarLinhas(
         conteudoCompleto,
@@ -1386,7 +1393,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada11) {
+    } else if (variavelMalFormada11 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 11: " + variavelMalFormada11[0]);
       const purpleText = `${variavelMalFormada11[0]}`;
       console.log(purpleText);
@@ -1421,7 +1428,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada12) {
+    } else if (variavelMalFormada12 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 12: " + variavelMalFormada12[0]);
       const purpleText = `${variavelMalFormada12[0]}`;
       console.log(purpleText);
@@ -1456,7 +1463,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada13) {
+    } else if (variavelMalFormada13 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 13: " + variavelMalFormada13[0]);
       const purpleText = `${variavelMalFormada13[0]}`;
       console.log(purpleText);
@@ -1491,7 +1498,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[</span>${purpleText2}<span style="color: purple;">]>></span>.`;
-    } else if (variavelMalFormada14) {
+    } else if (variavelMalFormada14 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 14: " + variavelMalFormada14[0]);
       const purpleText = `${variavelMalFormada14[0]}`;
       console.log(purpleText);
@@ -1526,7 +1533,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[</span>${purpleText2}<span style="color: purple;">]>></span>.`;
-    } else if (variavelMalFormada15) {
+    } else if (variavelMalFormada15 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 15: " + variavelMalFormada15[0]);
       const purpleText = `${variavelMalFormada15[0]}`;
       console.log(purpleText);
@@ -1561,7 +1568,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada16) {
+    } else if (variavelMalFormada16 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 16: " + variavelMalFormada16[0]);
       const purpleText = `${variavelMalFormada16[0]}`;
       console.log(purpleText);
@@ -1596,7 +1603,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[</span>${purpleText2}<span style="color: purple;">]>></span>.`;
-    } else if (variavelMalFormada17) {
+    } else if (variavelMalFormada17 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 17: " + variavelMalFormada17[0]);
       const purpleText = `${variavelMalFormada17[0]}`;
       console.log(purpleText);
@@ -1631,7 +1638,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada18) {
+    } else if (variavelMalFormada18 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 18: " + variavelMalFormada18[0]);
       const purpleText = `${variavelMalFormada18[0]}`;
       console.log(purpleText);
@@ -1666,7 +1673,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[</span>${purpleText2}<span style="color: purple;">]>></span>.`;
-    } else if (variavelMalFormada19) {
+    } else if (variavelMalFormada19 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 19: " + variavelMalFormada19[0]);
       const purpleText = `${variavelMalFormada19[0]}`;
       console.log(purpleText);
@@ -1701,7 +1708,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[</span>${purpleText2}<span style="color: purple;">]>></span>.`;
-    } else if (variavelMalFormada20) {
+    } else if (variavelMalFormada20 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 20: " + variavelMalFormada20[0]);
       const purpleText = `${variavelMalFormada20[0]}`;
       console.log(purpleText);
@@ -1736,7 +1743,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[</span>${purpleText2}<span style="color: purple;">]>></span>.`;
-    } else if (variavelMalFormada21) {
+    } else if (variavelMalFormada21 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 21: " + variavelMalFormada21[0]);
       const purpleText = `${variavelMalFormada21[0]}`;
       console.log(purpleText);
@@ -1771,7 +1778,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada22) {
+    } else if (variavelMalFormada22 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 22: " + variavelMalFormada22[0]);
       const purpleText = `${variavelMalFormada22[0]}`;
       console.log(purpleText);
@@ -1806,7 +1813,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada23) {
+    } else if (variavelMalFormada23 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 23: " + variavelMalFormada23[0]);
       const purpleText = `${variavelMalFormada23[0]}`;
       console.log(purpleText);
@@ -1841,7 +1848,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[</span>${purpleText2}<span style="color: purple;">]>></span>.`;
-    } else if (variavelMalFormada24) {
+    } else if (variavelMalFormada24 && !excecaoMalFormada1) {
       console.log("Variável Mal Formada 24: " + variavelMalFormada24[0]);
       const purpleText = `${variavelMalFormada24[0]}`;
       console.log(purpleText);
@@ -1876,7 +1883,7 @@ function verificarTexto() {
       outputDiv.innerHTML += ` na linha ${linhaPalavraMalFormada}.<br>
     
       Sugestão de correção: <span style="color: purple;"><<[</span>${purpleText2}<span style="color: purple;">]>></span>.`;
-    } else if (variavelMalFormada25) {
+    } else if (variavelMalFormada25 && !excecaoMalFormada1) {
       console.log("Não entrou em nenhuma 25");
       console.log(variavelMalFormada25);
       const linhaPalavraMalFormada = contarLinhas(
@@ -1899,7 +1906,7 @@ function verificarTexto() {
       outputDiv.style.overflowY = "scroll"
       outputDiv.innerHTML += `Conteúdo mal formado na <span style="color: purple;">linha ${linhaPalavraMalFormada}</span>.<br>
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada26) {
+    } else if (variavelMalFormada26 && !excecaoMalFormada1) {
       console.log("Não entrou em nenhuma 26");
       console.log(variavelMalFormada26);
       const linhaPalavraMalFormada = contarLinhas(
@@ -1922,7 +1929,7 @@ function verificarTexto() {
       outputDiv.style.overflowY = "scroll"
       outputDiv.innerHTML += `Conteúdo mal formado na <span style="color: purple;">linha ${linhaPalavraMalFormada}</span>.<br>
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada27) {
+    } else if (variavelMalFormada27 && !excecaoMalFormada1) {
       console.log("Não entrou em nenhuma 27");
       console.log(variavelMalFormada27);
       const linhaPalavraMalFormada = contarLinhas(
@@ -1945,7 +1952,7 @@ function verificarTexto() {
       outputDiv.style.overflowY = "scroll"
       outputDiv.innerHTML += `Conteúdo mal formado na <span style="color: purple;">linha ${linhaPalavraMalFormada}</span>.<br>
       Sugestão de correção: <span style="color: purple;"><<[CONTEÚDO]>></span>.`;
-    } else if (variavelMalFormada28) {
+    } else if (variavelMalFormada28 && !excecaoMalFormada1) {
       console.log("Não entrou em nenhuma 28");
       console.log(variavelMalFormada28);
       const linhaPalavraMalFormada = contarLinhas(
@@ -1995,6 +2002,7 @@ function verificarTexto() {
     } 
     else {
       console.log("Não entrou em nenhuma");
+      temErros = false;
     }
   }
 
