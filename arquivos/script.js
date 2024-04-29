@@ -38,6 +38,20 @@ function showIcon(){
 
 }
 
+const toggleSwitch = document.getElementById('toggleSwitch'); // Acessa o checkbox
+let toggleActive = false;
+
+  toggleSwitch.addEventListener('change', function() {
+    if (this.checked) {
+      toggleActive = true;
+      console.log("Checou")
+      tinymce.activeEditor.on('keyup', clickParaVerificar);
+    } else {
+      // Se o checkbox não está marcado, desativa a verificação automática
+      tinymce.activeEditor.off('keyup');
+    }
+  });
+
 
 function copiarTexto(texto) {
   // Cria um elemento de input dinamicamente
@@ -774,6 +788,8 @@ function verificarTexto() {
       recebeAction.removeChild(copiedElement);
     }, 4000);
     temErros = true;
+
+    console.log("Entrou aqui")
 
     const ifMalFormado1 = conteudoCompleto.match(/<<if/);
 
@@ -2006,13 +2022,19 @@ function verificarTexto() {
     }
   }
 
+
   if (!temErros) {
-    outputDiv.style.width = "inherit"
-    outputDiv.style.left  = "500px"
+    
+    outputDiv.style.left  = "130px"
+    outputDiv.style.width = "500px"
     outputDiv.innerHTML +=
       '<span class="purple">Nenhum erro encontrado.\nO texto está correto!</span>';
     const divContainer = document.getElementById("btnDownloadContainer");
-    divContainer.innerHTML += `    <button onclick="downloadDocx()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnDownload" style="display: none;"><i class="fa-regular fa-file-word" id="icon4"></i>BAIXAR TEMPLATE</button>`;
+    console.log("Sem erros!")
+    const buttonExists = divContainer.querySelector('button') !== null;
+    if (!buttonExists) {
+      divContainer.innerHTML += `    <button onclick="downloadDocx()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnDownload" style="display: none;"><i class="fa-regular fa-file-word" id="icon4"></i>BAIXAR TEMPLATE</button>`;
+    }
     const lineNumbers = document.getElementById("lineNumbers");
     lineNumbers.style.top = "45.8%";
     const loaderContainer = document.getElementById("loaderContainer");

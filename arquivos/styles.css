@@ -456,7 +456,7 @@ body {
   align-items: center;
   justify-content: start;
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-left: 5%;
   background-color: transparent;
   border: none;
@@ -1168,3 +1168,86 @@ hr{
   }
 
 }
+
+.verify-group{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Estilo básico do switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 35px; /* Largura do switch */
+  height: 20px; /* Altura do switch */
+  margin-left: 7px;
+}
+
+.switch:hover{
+  background: none; 
+}
+
+/* Esconde o checkbox original */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch input:focus, .switch input:hover {
+  background-color: transparent;
+  border: none;  
+}
+
+/* Estilo do slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc; /* Cor de fundo quando inativo */
+  transition: .4s; /* Animação do slide */
+  border-radius: 34px; /* Bordas arredondadas */
+}
+
+/* Bolinha que desliza (slider) */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px; /* Tamanho da bolinha */
+  width: 15px; /* Tamanho da bolinha */
+  left: 3px;
+  bottom: 2.5px;
+  background-color: white; /* Cor da bolinha */
+  transition: .4s;
+  border-radius: 50%; /* Forma redonda */
+}
+
+
+/* Cor do slider quando o checkbox está marcado */
+input:checked + .slider {
+  background-color: rgb(134, 0, 112); /* Cor azul quando ativo */
+}
+
+/* Posição da bolinha quando o checkbox está marcado */
+input:checked + .slider:before {
+  transform: translateX(13.5px); /* Desloca a bolinha para a direita */
+}
+
+/* Efeito hover no slider (opcional) */
+.slider:hover {
+  background-color: #7d7d7d; /* Mudança de cor ao passar o mouse (quando inativo) */
+}
+
+.verify-text{
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: 7px;
+  margin-top: 1%;
+  color: rgb(134, 0, 112);
+}
+
+
