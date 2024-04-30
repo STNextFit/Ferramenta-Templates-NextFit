@@ -51,8 +51,9 @@ body {
     animation: fadein 0.4s ease-in-out;
   }
 
-  #tutorial{
+  a #tutorial{
     text-decoration: none;
+    width: 100px;
   }
 
   #fileInput{
@@ -1128,14 +1129,11 @@ hr{
 
 
 #btnForm{
-  margin-bottom: -20px;
   margin-top: 30px;
-  width: 25%;
+  width: 100%;
   padding-left: 15px;
   height: 50px;
-  margin-left: 37.5%;
   text-decoration: none;
-  align-items: center;
   padding-left: 2.5%;
   background-color: transparent;
   border: none;
@@ -1250,4 +1248,17 @@ input:checked + .slider:before {
   color: rgb(134, 0, 112);
 }
 
+#googleForms{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#aBtnForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  text-decoration: none;
+}
 
