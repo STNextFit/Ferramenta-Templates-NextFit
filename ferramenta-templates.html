@@ -13,7 +13,7 @@
   <script src="https://kit.fontawesome.com/a366e9213f.js" crossorigin="anonymous"></script>
   <title>Ferramenta de Templates</title>
 </head>
-<body>
+<body id="body">
   <div id="background" style="display: none;"></div>
   <div id="popup" style="display: none;">
     <p id="XQuit" onclick="fechaPopUp()">X</p>
@@ -27,6 +27,24 @@
     <div id="textPopup"></div>
     
   </div>
+
+  <!-- <div id="backgroundHelp"></div>
+  <div id="popupHelp">
+    <p id="XQuitHelp" onclick="fechaPopUpHelp()">X</p>
+    <p id="titlePopupHelp">Como posso ajudar?</p>
+    <p id="duvidaRecorrenteTitle">Dúvidas recorrentes</p>
+    <div class="btnsHelp">
+      <button id="btnHelp1" onclick="showHelp1()">O que é template e contrato?</button>
+      <button id="btnHelp2">Como a assinatura é validada?</button>
+      <button id="btnHelp3">O que é assinatura eletrônica?</button>
+    </div>
+    <br>
+    <div id="answers1">
+      <p id="pAnswer"></p>
+    </div>
+  </div> 
+-->
+
   <div class="main-container">
     <div id="mensagemCopia" style="display: none;"></div>
     <div id="mensagemDeErro">
@@ -72,6 +90,9 @@
     <div class="buttons-form-tutorial">
       <div id="googleForms">
         <a href="https://forms.gle/bjCg1tCn5DRgkxHp7" target="_blank" id="aBtnForm"><button id="btnForm"><i class="fa-regular fa-file-lines" id="icon5"></i>GOOGLE FORMS</button></a>
+      </div>
+      <div id="helpCamp">
+        <button id="btnHelp" onclick="openPopUpHelp()"><i class="fa-solid fa-lightbulb" id="icon7"></i>PRECISA DE AJUDA?</button>
       </div>
     </div>
     <br>

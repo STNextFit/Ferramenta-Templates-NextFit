@@ -23,6 +23,47 @@ function fechaPopUp(){
   const popup = document.getElementById("popup");
   background.style.display = "none"
   popup.style.display = "none"
+  const body = document.getElementById("body");
+  body.style.overflow = "inherit";
+}
+
+function fechaPopUpHelp(){
+  const backgroundHelp = document.getElementById("backgroundHelp");
+  const popupHelp = document.getElementById("popupHelp");
+  backgroundHelp.style.display = "none"
+  popupHelp.style.display = "none"
+  const body = document.getElementById("body");
+  body.style.overflow = "inherit";
+  const divAnswer = document.getElementById("answers1");
+  divAnswer.innerText = ""
+}
+
+function openPopUpHelp(){
+  const backgroundHelp = document.getElementById("backgroundHelp");
+  const popupHelp = document.getElementById("popupHelp");
+  backgroundHelp.style.display = "flex"
+  popupHelp.style.display = "flex"
+  const body = document.getElementById("body");
+  body.style.overflow = "hidden";
+}
+
+function showHelp1(){
+  const btnHelp1 = document.getElementById("btnHelp1");
+  console.log("Teste");
+  const divAnswer = document.getElementById("answers1");
+  divAnswer.innerText = ""
+  divAnswer.innerText = `Template, no inglês, significa modelo. No Next Fit, o Template é o Modelo de Contrato Jurídico,
+  que será impresso com os dados do cliente, da empresa, da venda e do contrato.
+  Nessa lógica, o gestor se encarrega de preparar apenas um modelo de contrato,
+  que será personalizado para cada plano vendido aos clientes. Os Templates no Next Fit
+  são impressos em arquivo em formato de PDF. Por isso, é possível imprimir fisicamente,
+  em impressora, ou escolher a assinatura eletrônica por nosso parceiro, o Autentique.`
+}
+
+const background = document.getElementById("background");
+if (background.style.display == "flex"){
+  const body = document.getElementById("body");
+  body.style.overflow = "hidden";
 }
 
 function showIcon(){
@@ -689,6 +730,7 @@ function verificarTexto() {
   .replace(/<\/em>/g, "")
   .replace(/<a[^>]*>/g, "")
   .replace(/<\/a>/g, "")
+  .replace(/<p style="color: black;">/g, "")
   
   console.log("\n\n\n\nTexto final: \n" + semPTags);
   const regexx = /<<\[/;
@@ -869,10 +911,10 @@ function verificarTexto() {
       <br>
       `;
       outputDiv.appendChild(valorPadraoIf);
-      const btnSearch = document.createElement('button');
-      btnSearch.innerText = "Procurar"
-      outputDiv.appendChild(btnSearch)
-      btnSearch.className = "verificaBtn"
+      //const btnSearch = document.createElement('button');
+      //btnSearch.innerText = "Procurar"
+      //outputDiv.appendChild(btnSearch)
+      //btnSearch.className = "verificaBtn"
       btnSearch.addEventListener('click', () => {
         const palavraPesquisa = "if"
 
