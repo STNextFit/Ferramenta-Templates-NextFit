@@ -1408,6 +1408,57 @@ input:checked + .slider:before {
 }
 
 #answers1{
+  display: none;
+  width: 85%;
+  background-color: rgba(207, 207, 207, 0.555);
+  padding: 20px;
+  border-radius: 20px;
+  animation: fadein 0.8s ease-in-out;
+  font-size: 14px;
+  margin-bottom: -20px;
+}
+
+#clickHereDocument{
+  text-decoration: none;
+  color: #630070;
+  transition: 0.1s ease-in-out;
+}
+
+#clickHereDocument:hover{
+  font-weight: 600;
+  scale: calc(1.02);
+}
+
+#pSugestion{
+  margin-top: 10px;
+  margin-bottom: -20px;
+  font-size: 15px;
+}
+
+#aBtnForm2{
   display: flex;
-  text-align: justify;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  text-decoration: none;
+}
+
+#btnForm2{
+  margin-top: 30px;
+  width: 70%;
+  padding-left: 15px;
+  height: 30px;
+  text-decoration: none;
+  padding-left: 2.5%;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: rgb(0, 13, 134);
+  font-size: 13.5px;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+#btnForm2:hover{
+  background-color: rgba(0, 34, 226, 0.274);
 }

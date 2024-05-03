@@ -36,6 +36,7 @@ function fechaPopUpHelp(){
   body.style.overflow = "inherit";
   const divAnswer = document.getElementById("answers1");
   divAnswer.innerText = ""
+  divAnswer.style.display = "none"
 }
 
 function openPopUpHelp(){
@@ -47,17 +48,37 @@ function openPopUpHelp(){
   body.style.overflow = "hidden";
 }
 
-function showHelp1(){
-  const btnHelp1 = document.getElementById("btnHelp1");
-  console.log("Teste");
+function showHelp(helpType){
   const divAnswer = document.getElementById("answers1");
-  divAnswer.innerText = ""
-  divAnswer.innerText = `Template, no inglês, significa modelo. No Next Fit, o Template é o Modelo de Contrato Jurídico,
-  que será impresso com os dados do cliente, da empresa, da venda e do contrato.
-  Nessa lógica, o gestor se encarrega de preparar apenas um modelo de contrato,
-  que será personalizado para cada plano vendido aos clientes. Os Templates no Next Fit
-  são impressos em arquivo em formato de PDF. Por isso, é possível imprimir fisicamente,
-  em impressora, ou escolher a assinatura eletrônica por nosso parceiro, o Autentique.`
+
+  divAnswer.style.display = "flex"
+
+  const helpTexts = {
+    help1: `
+    Template, no inglês, significa modelo. No Next Fit, o Template é o Modelo de Contrato Jurídico,
+    que será impresso com os dados do cliente, da empresa, da venda e do contrato.
+    Nessa lógica, o gestor se encarrega de preparar apenas um modelo de contrato,
+    que será personalizado para cada plano vendido aos clientes. <br> <br> Os Templates no Next Fit
+    são impressos em arquivo em formato de PDF. Por isso, é possível imprimir fisicamente,
+    em impressora, ou escolher a assinatura eletrônica por nosso parceiro, o Autentique.`,
+
+    help2: `O método de assinatura adotado pela plataforma Autentique é fundamentado em um processo de verificação
+    transparente, abrangendo a validação de dados como CPF, data de nascimento, informações cadastrais e o Endereço IP do signatário.
+    <br> <br> A identificação das partes envolvidas é realizada por três vetores distintos: ao enviar um documento para assinatura, um código
+    exclusivo é gerado e enviado por e-mail, acessível somente pelo respectivo signatário no endereço de assinatura indicado. Ao clicar
+    nesse link, é confirmado que o signatário possui controle sobre o endereço de e-mail em questão.
+    <br> <br> Durante o procedimento de assinatura, são solicitados os dados pessoais do signatário, como nome,data de nascimento e CPF.
+    Além disso, são coletados dados de conexão da parte que assina, como endereço IP, geolocalização, identificadores do dispositivo
+    e do navegador, possibilitando a correlação dessas informações judicialmente, se as assinaturas forem questionadas.`,
+
+    help3: `A assinatura eletrônica é uma forma de subscrever documentos por meios computacionais. Por registros como e-mail, CPF, IP, é possível
+    autenticar a autoria de firma manuscrita em documento hospedado em plataforma digital.
+    <br> <br> A assinatura eletrônica é importante por vários motivos, pois oferece benefícios significativos em relação à tradicional
+    assinatura em papel, como redução de custos de impressão e papel, eficiência e agilidade, segurança e rastreabilidade, por exemplo.`
+  }
+  if (divAnswer.innerHTML !== helpTexts[helpType]) {
+    divAnswer.innerHTML = helpTexts[helpType];
+  }
 }
 
 const background = document.getElementById("background");
