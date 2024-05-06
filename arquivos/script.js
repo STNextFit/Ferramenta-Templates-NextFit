@@ -752,8 +752,11 @@ function verificarTexto() {
   .replace(/<a[^>]*>/g, "")
   .replace(/<\/a>/g, "")
   .replace(/<p style="color: black;">/g, "")
-  
-  console.log("\n\n\n\nTexto final: \n" + semPTags);
+  .replace(/<thead>/g, "")
+  .replace(/<th>/g, "")
+  .replace(/<\/th>/g, "")
+  .replace(/<\/thead>/g, "")
+
   const regexx = /<<\[/;
   let conteudoDentroDoIf2 = "";
   const matches = REGEX.exec(textoSemVariaveis);
