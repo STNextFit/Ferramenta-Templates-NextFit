@@ -6,6 +6,40 @@ var returnBtn = document.getElementById("returnBtn");
 var firstFileAdded = false; // Flag para rastrear se o primeiro arquivo foi adicionado
 
 
+$(document).ready(function() {
+  $('#slideButton').click(function() {
+    $('.variables-container').toggleClass('is-slid');
+  });
+});
+
+var button = document.getElementById('slideButton');
+  var icon = button.querySelector('i');
+
+  button.addEventListener('click', function() {
+    icon.classList.toggle('rotated');
+    const body = document.getElementById("body");
+    if(icon.classList.contains('rotated')){
+      button.style.marginLeft = "20px"
+      const container = document.getElementById('container');
+      container.style.marginLeft = "25%"
+      container.style.marginRight = "0px"
+      body.style.overflowX = "hidden"
+
+    }else{
+      body.style.overflow = "inherit";
+      const container = document.getElementById('container');
+      container.style.marginLeft = "9%"
+      container.style.marginRight = "-150px"
+    }
+    if(button.classList.contains('moved')){
+      button.classList.remove('moved');
+    } else {
+      setTimeout(function(){
+        button.classList.add('moved');
+      }, 800)
+    }
+  });
+
 if(!localStorage.getItem('popupShown2')){
   const background = document.getElementById("background");
   const popup = document.getElementById("popup");

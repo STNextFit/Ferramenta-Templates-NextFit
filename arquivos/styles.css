@@ -568,7 +568,9 @@ body {
 #container{
   margin-right: -150px;
   margin-left: 9%;
+  transition: 0.7s ease-in-out;
 }
+
 
 #titleVariable {
   font-weight: 300;
@@ -1462,3 +1464,46 @@ input:checked + .slider:before {
 #btnForm2:hover{
   background-color: rgba(0, 34, 226, 0.274);
 }
+
+.variables-container {
+  transition: transform 0.5s ease-in-out; /* Suaviza a transição */
+}
+
+.is-slid {
+  transform: translateX(100%); /* Move o contêiner para a esquerda */
+}
+
+.rotated {
+  transform: rotate(-180deg);
+  transition: transform 0.5s ease;
+}
+
+#slideButton.moved {
+  transform: translateX(-100px); /* Move o botão 50px para a esquerda */
+}
+
+#slideButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #a031ae;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  transition: 0.3s ease-in-out;
+  margin-left: 3.5%;
+}
+
+#slideButton i{
+  transition: transform 0.7s ease;
+}
+
+#slideButton:hover{
+  background-color: #802890;
+  scale: calc(1.04);
+}
+
