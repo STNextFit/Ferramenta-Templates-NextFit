@@ -1422,7 +1422,7 @@ input:checked + .slider:before {
   text-decoration: none;
   color: #630070;
   transition: 0.1s ease-in-out;
-}
+} 
 
 #clickHereDocument:hover{
   font-weight: 600;
