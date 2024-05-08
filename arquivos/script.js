@@ -790,6 +790,7 @@ function verificarTexto() {
   .replace(/<th>/g, "")
   .replace(/<\/th>/g, "")
   .replace(/<\/thead>/g, "")
+.replace(/<span[^>]*>/g, "")
 
   const regexx = /<<\[/;
   let conteudoDentroDoIf2 = "";
