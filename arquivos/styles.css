@@ -187,8 +187,9 @@ body {
 #btns{
   margin-top: 10%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
-  gap: 2%;
 }
 
 .purple{
@@ -197,14 +198,14 @@ body {
 
 #btnPopUp1{
   background-color: transparent;
-  width: 20%;
-  height: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
   color: purple;
   font-weight: bold;
   padding: 10px;
   text-align: center;
   border-radius: 12px;
-  margin-left: 15.5%;
   user-select: none;
   transition: 0.3s ease-in-out;
 }
@@ -214,11 +215,11 @@ body {
 }
 
 #btnPopUp1:hover::before {
-  content: "Formate arquivos de forma fidedigna ao arquivo DOCX original, incluindo imagens, tabelas, entre outros componentes."; /* Texto que será mostrado ao fazer hover */
+  content: "Novos retornos para casos de erros em estruturas IF e ForEach."; /* Texto que será mostrado ao fazer hover */
   position: absolute;
   color: rgb(136, 9, 125);
   border-radius: 5px;
-  top: 530px;
+  top: 230px;
   left: 50%;
   transform: translateX(-50%);
   animation: fadein 1s ease-in-out;
