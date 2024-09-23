@@ -18,7 +18,6 @@
   <div id="popup" style="display: none;">
     <p id="XQuit" onclick="fechaPopUp()">X</p>
     <p id="titlePopup">O QUE HÁ DE NOVO?</p>
-    <img src="./arquivos/FerramentadeTemplates-GoogleChrome-26April2024-ezgif.com-speed.gif" id="gifTemplate" alt="">
     <div id="btns">
       <p id="btnPopUp1">Nova formatação</p>
       <p id="btnPopUp2">Estrutura de responsável</p>
@@ -28,6 +27,7 @@
     
   </div>
 
+  <!-- POPUP DE AJUDA ARGUMENTAÇÃO TEMPLATE -->
   <div id="backgroundHelp" style="display: none;"></div>
   <div id="popupHelp" style="display: none;">
     <p id="XQuitHelp" onclick="fechaPopUpHelp()">X</p>
@@ -43,6 +43,113 @@
     </div>
     <br>
     <p id="pSugestion">Tem alguma sugestão de argumentação?</p>
+    <a href="https://forms.gle/bjCg1tCn5DRgkxHp7" target="_blank" id="aBtnForm2"><button id="btnForm2"><i class="fa-regular fa-file-lines" id="icon5"></i>GOOGLE FORMS</button></a>
+  </div> 
+
+ <!-- POPUP DE VERIFICAÇÃO IF -->
+  <div id="backgroundHelpIf" style="display: none;"></div>
+  <div id="popupSeeMoreIf" style="display: none;">
+    <p id="XQuitHelp" onclick="fechaSeeMoreIf()">X</p>
+    <p id="titlePopupHelp">Como corrigir um IF mal formatado?</p>
+    <div class="section-text">
+      <p id="duvidaRecorrenteTitle">Verifique se o IF possui abertura e fechamento:</p>
+      <p id="duvidaExplicacao">
+        Por padrão, o if possui abertura (&lt;&lt;if [ValorAdesao &gt; 0]&gt;&gt;) e fechamento (&lt;&lt;/if&gt;&gt;).
+        Se a estrutura não possuir um desses dois, dá erro.
+        <br>
+        - Estrutura correta: <span class="duvidaBold">&lt;&lt;if [ValorAdesao &gt; 0]&gt;&gt; *CONTEÚDO* &lt;&lt;/if&gt;&gt;</span>
+        <br>
+        - Estrutura incorreta (sem fechamento): <span class="duvidaBold">&lt;&lt;if [ValorAdesao &gt; 0]&gt;&gt; *CONTEÚDO*.</span>
+      </p>
+    </div>
+    <hr class="hr-popup">
+    <div class="section-text">
+      <p id="duvidaRecorrenteTitle">Verifique a sintaxe:</p>
+      <p id="duvidaExplicacao">
+        Se uma abertura ou fechamento estiver escrito incorretamente, isso gera um erro. 
+        Qualquer caractere incorreto na abertura e fechamento podem causar erros.
+        <br>
+        - Sintaxe correta: <span class="duvidaBold">&lt;&lt;if [ValorAdesao &gt; 0]&gt;&gt; *CONTEÚDO* &lt;&lt;/if&gt;&gt;</span>
+        <br>
+        - Sintaxe incorreta (fechamento com apenas uma chave final): &lt;&lt;if [ValorAdesao &gt; 0]&gt;&gt; *CONTEÚDO* <span class="duvidaBold">&lt;&lt;/if&gt;.</span>
+        <br>
+        - Sintaxe incorreta (abertura com apenas uma chave final): <span class="duvidaBold">&lt;&lt;if [ValorAdesao &gt; 0]&gt;</span> *CONTEÚDO* &lt;&lt;/if&gt;&gt;.
+      </p>
+    </div>
+    <hr class="hr-popup">
+    <div class="section-text">
+      <p id="duvidaRecorrenteTitle">Verifique o tamanho:</p>
+      <p id="duvidaExplicacao">
+        Se o template <span class="duvidaBold">possuir estruturas mais complexas</span> (com if e foreach dentro da mesma estrutura),
+        a Ferramenta de Templates <span class="duvidaBold">pode confundir e identificar erros equivocadamente.</span> Considere remover toda a estrutura
+        complexa e verificar se o erro persiste. É possível que o erro não esteja na estrutura.
+      </p>
+    </div>
+    <hr class="hr-popup">
+    <div class="section-text2">
+      <p id="duvidaRecorrenteTitle">Vídeo exemplo mostrando os erros:</p>
+      <p id="duvidaExplicacao">
+        Verifique os erros de IF que podem ocorrer, e como corrigi-los:
+        <a href="https://www.loom.com/share/4a84f25d9c8d4e0c946c51b4256b42dd?sid=60e6d272-d3df-4ca6-8023-365ae35bc59c" target="_blank" class="view-video-help">VISUALIZAR</a>
+      </p>
+    </div>
+    <br>
+    <p id="pSugestion">Tem alguma sugestão?</p>
+    <a href="https://forms.gle/bjCg1tCn5DRgkxHp7" target="_blank" id="aBtnForm2"><button id="btnForm2"><i class="fa-regular fa-file-lines" id="icon5"></i>GOOGLE FORMS</button></a>
+  </div> 
+
+  <!-- POPUP DE VERIFICAÇÃO ForEach -->
+  <div id="backgroundHelpForeach" style="display: none;"></div>
+  <div id="popupSeeMoreForeach" style="display: none;">
+    <p id="XQuitHelp" onclick="fechaSeeMoreForeach()">X</p>
+    <p id="titlePopupHelp">Como corrigir um ForEach mal formatado?</p>
+    <div class="section-text">
+      <p id="duvidaRecorrenteTitle">Verifique se o ForEach possui abertura e fechamento:</p>
+      <p id="duvidaExplicacao">
+        Por padrão, o ForEach possui abertura (&lt;&lt;foreach [modalidade in Modalidades]&gt;&gt;) e fechamento (&lt;&lt;/foreach&gt;&gt;).
+        Se a estrutura não possuir um desses dois, dá erro.
+        <br>
+        - Estrutura correta: <span class="duvidaBold">&lt;&lt;foreach [modalidade in Modalidades]&gt;&gt; *CONTEÚDO* &lt;&lt;/foreach&gt;&gt;</span>
+        <br>
+        - Estrutura incorreta (sem fechamento): <span class="duvidaBold">&lt;&lt;foreach [modalidade in Modalidades]&gt;&gt; *CONTEÚDO*.</span>
+      </p>
+    </div>
+    <hr class="hr-popup">
+    <div class="section-text">
+      <p id="duvidaRecorrenteTitle">Verifique a sintaxe:</p>
+      <p id="duvidaExplicacao">
+        Se uma abertura ou fechamento estiver escrito incorretamente, isso gera um erro. 
+        Qualquer caractere incorreto na abertura e fechamento podem causar erros.
+        <br>
+        - Sintaxe correta: <span class="duvidaBold">&lt;&lt;foreach [modalidade in Modalidades]&gt;&gt; *CONTEÚDO* &lt;&lt;/foreach&gt;&gt;</span>
+        <br>
+        - Sintaxe incorreta (fechamento com apenas uma chave final): &lt;&lt;foreach [modalidade in Modalidades]&gt;&gt; *CONTEÚDO* <span class="duvidaBold">&lt;&lt;/foreach&gt;.</span>
+        <br>
+        - Sintaxe incorreta (abertura com apenas uma chave final): <span class="duvidaBold">&lt;&lt;foreach [modalidade in Modalidades&gt;</span> *CONTEÚDO* &lt;&lt;/foreach&gt;&gt;.
+      </p>
+    </div>
+    <hr class="hr-popup">
+    <div class="section-text">
+      <p id="duvidaRecorrenteTitle">Verifique o tamanho:</p>
+      <p id="duvidaExplicacao">
+        Se o template <span class="duvidaBold">possuir estruturas mais complexas</span> (com if e foreach dentro da mesma estrutura),
+        a Ferramenta de Templates <span class="duvidaBold">pode confundir e identificar erros equivocadamente.</span> Considere remover toda a estrutura
+        complexa e verificar se o erro persiste. É possível que o erro não esteja na estrutura.
+      </p>
+    </div>
+    <hr class="hr-popup">
+    <div class="section-text2">
+      <p id="duvidaRecorrenteTitle">Vídeo exemplo mostrando os erros:</p>
+      <p id="duvidaExplicacao">
+        Verifique os erros de ForEach que podem ocorrer, e como corrigi-los:
+        <a href="https://www.loom.com/share/0d9557373950444fb239f53a6de2c37f" target="_blank" class="view-video-help">VISUALIZAR</a>
+      </p>
+    </div>
+    <br>
+    <div id="answers1">
+    </div>
+    <br>
+    <p id="pSugestion">Tem alguma sugestão?</p>
     <a href="https://forms.gle/bjCg1tCn5DRgkxHp7" target="_blank" id="aBtnForm2"><button id="btnForm2"><i class="fa-regular fa-file-lines" id="icon5"></i>GOOGLE FORMS</button></a>
   </div> 
 
@@ -106,7 +213,7 @@
       <button class="btn btn meusBotoes" id="clienteRG" onclick="copiarTexto('<<[RgCliente]>>')" data-mensagem="Exemplo de uso: 23.118.664-2">RG do cliente</button>
       <button class="btn btn meusBotoes" id="clienteNasc" onclick="copiarTexto('<<[DataNascimentoCliente]>>')" data-mensagem="Exemplo de uso: 20/08/1992">Data de nascimento do cliente</button>
       <button class="btn btn meusBotoes" id="clienteSexo" onclick="copiarTexto('<<[SexoCliente]>>')" data-mensagem="Exemplo de uso: Masculino/Feminino">Sexo do cliente</button>
-      <button class="btn btn meusBotoes" id="clienteEmail" onclick="copiarTexto('<<[EmailCliente]>>')" data-mensagem="Exemplo de uso: emaildocliente@gmail.com">E-mail do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteEmail" onclick="copiarTexto('<<[EmailCliente]>>')" data-mensagem="Exemplo de uso: emaildocliente@gmail.com">Email do cliente</button>
       <button class="btn btn meusBotoes" id="clienteTel" onclick="copiarTexto('<<[TelefoneCliente]>>')" data-mensagem="Exemplo de uso: (48) 987654321">Telefone do cliente</button>
       <button class="btn btn meusBotoes" id="clienteEndereco" onclick="copiarTexto('<<[EnderecoCliente]>>')" data-mensagem="Exemplo de uso: Avenida Tietê">Endereço do cliente</button>
       <button class="btn btn meusBotoes" id="clienteNumEndereco" onclick="copiarTexto('<<[NumeroEnderecoCliente]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço do cliente</button>
@@ -126,7 +233,7 @@
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<image [LogoFilial]>>')" data-mensagem="Exemplo de uso: Imagem da logo">Logomarca da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CnpjCpfFilial]>>')" data-mensagem="Exemplo de uso: 31.265.901/0001-39">CPF/CNPJ da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[TelefoneFilial]>>')" data-mensagem="Exemplo de uso: (48) 987654321">Telefone da empresa</button>
-      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EmailFilial]>>')" data-mensagem="Exemplo de uso: contato@nextfit.com.br">E-mail da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EmailFilial]>>')" data-mensagem="Exemplo de uso: contato@nextfit.com.br">Email da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EnderecoFilial]>>')" data-mensagem="Exemplo de uso: Avenida Tietê">Endereço da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NumeroEnderecoFilial]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ComplementoEnderecoFilial]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço da empresa</button>

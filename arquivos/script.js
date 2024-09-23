@@ -40,16 +40,16 @@ var button = document.getElementById('slideButton');
     }
   });
 
-if(!localStorage.getItem('popupShown2')){
+if(!localStorage.getItem('popupShown3')){
   const background = document.getElementById("background");
   const popup = document.getElementById("popup");
   background.style.display = "flex"
   popup.style.display = "flex"
-  localStorage.setItem('popupShown2', true);
+  localStorage.setItem('popupShown3', true);
 }
 
-if(localStorage.getItem('popupShown')){
-  localStorage.removeItem('popupShown')
+if(localStorage.getItem('popupShown2')){
+  localStorage.removeItem('popupShown2')
 }
 
 function fechaPopUp(){
@@ -80,6 +80,48 @@ function openPopUpHelp(){
   popupHelp.style.display = "flex"
   const body = document.getElementById("body");
   body.style.overflow = "hidden";
+}
+
+function openSeeMoreIf(){
+  const backgroundHelp = document.getElementById("backgroundHelpIf");
+  const popupHelp = document.getElementById("popupSeeMoreIf");
+  backgroundHelp.style.display = "flex"
+  popupHelp.style.display = "flex"
+  const body = document.getElementById("body");
+  body.style.overflow = "hidden";
+}
+
+function openSeeMoreForeach(){
+  const backgroundHelp = document.getElementById("backgroundHelpForeach");
+  const popupHelp = document.getElementById("popupSeeMoreForeach");
+  backgroundHelp.style.display = "flex"
+  popupHelp.style.display = "flex"
+  const body = document.getElementById("body");
+  body.style.overflow = "hidden";
+}
+
+function fechaSeeMoreIf(){
+  const backgroundHelp = document.getElementById("backgroundHelpIf");
+  const popupHelp = document.getElementById("popupSeeMoreIf");
+  backgroundHelp.style.display = "none"
+  popupHelp.style.display = "none"
+  const body = document.getElementById("body");
+  body.style.overflow = "inherit";
+  const divAnswer = document.getElementById("answers1");
+  divAnswer.innerText = ""
+  divAnswer.style.display = "none"
+}
+
+function fechaSeeMoreForeach(){
+  const backgroundHelp = document.getElementById("backgroundHelpForeach");
+  const popupHelp = document.getElementById("popupSeeMoreForeach");
+  backgroundHelp.style.display = "none"
+  popupHelp.style.display = "none"
+  const body = document.getElementById("body");
+  body.style.overflow = "inherit";
+  const divAnswer = document.getElementById("answers1");
+  divAnswer.innerText = ""
+  divAnswer.style.display = "none"
 }
 
 function showHelp(helpType){
@@ -474,8 +516,8 @@ function clickParaVerificar() {
   outputDiv.style.boxShadow = "none";
   outputDiv.style.padding = "15px";
   outputDiv.style.borderRadius = "7px";
-  outputDiv.style.marginTop = "-5%";
-  outputDiv.style.overflow = "inherit"
+  outputDiv.style.overflow = "inherit";
+  outputDiv.style.marginTop = "5%";
   outputDiv.style.width = "10%"
   outputDiv.style.left = "100px"
   const loaderContainer = document.createElement("div");
@@ -953,45 +995,37 @@ function verificarTexto() {
     const variavelMalFormada28 = conteudoCompleto.match(/(?! QuantMaximoDiasSuspensao)\b\w*\](?=\W|$)/); //ok
     const variavelMalFormada29 = conteudoCompleto.match(/(?! QuantMaximoDiasSuspensao)\b\w*\[\w+]\b>>/); //ok
 
-    const editor = tinymce.get("editor");
-
     if (ifMalFormado1) {
       console.log("IF MAL FORMADO 1");
       console.log(ifMalFormado1.index);
-      const purpleText = `<span style="color: purple;">${ifMalFormado1[0]}</span>`;
-      const linhaPalavraMalFormada = contarLinhas(
-        conteudoCompleto,
-        ifMalFormado1.index
-      );
-      const purpleText2 = `<span style="color: purple;">${ifMalFormado1[1]}</span>`;
 
       const editor = tinymce.get("editor");
       outputDiv.style.backgroundColor = "white";
       outputDiv.style.padding = "15px";
       outputDiv.style.borderRadius = "7px";
-      outputDiv.style.marginTop = "-10%";
+      outputDiv.style.marginTop = "-5%";
+      outputDiv.style.marginBottom = "-10%";
       outputDiv.style.boxShadow = "5px 5px 10px rgba(0, 0, 0, 0.5)";
       outputDiv.style.animation = "fadein 0.8s ease-in";
-      outputDiv.style.width = "40%"
+      outputDiv.style.width = "30%"
       outputDiv.style.overflowY = "scroll"
       const valorPadraoIf = document.createElement("p");
-      valorPadraoIf.innerText =
-        "<<if [TemResponsavel > 0]>> *CONTEÚDO* <</if>>\n\n<<if [ValorAdesao > 0]>> *CONTEÚDO* <</if>>\n\n<<if [QuantMaximoDiasSuspensao > 0]>> *CONTEÚDO* <</if>>";
+      valorPadraoIf.innerHTML =
+        `
+        <br>
+        <button id="see-more-if" onclick="openSeeMoreIf()">Ver mais</button>
+        `;
       valorPadraoIf.style.color = "purple";
       valorPadraoIf.style.fontSize = "15px"
       console.log(valorPadraoIf);
-      outputDiv.innerHTML += `Conteúdo mal formado: Estrutura IF na linha ${linhaPalavraMalFormada}.<br>
+      outputDiv.innerHTML += `Pode haver um IF mal formatado.<br>
       
     
-      Verifique se o valor segue o seguinte padrão:
-      <br>
+      Veja como corrigir abaixo:
       <br>
       `;
       outputDiv.appendChild(valorPadraoIf);
-      //const btnSearch = document.createElement('button');
-      //btnSearch.innerText = "Procurar"
-      //outputDiv.appendChild(btnSearch)
-      //btnSearch.className = "verificaBtn"
+
       btnSearch.addEventListener('click', () => {
         const palavraPesquisa = "if"
 
@@ -1033,20 +1067,24 @@ function verificarTexto() {
       outputDiv.style.backgroundColor = "white";
       outputDiv.style.padding = "15px";
       outputDiv.style.borderRadius = "7px";
-      outputDiv.style.marginTop = "-10%";
+      outputDiv.style.marginTop = "-5%";
+      outputDiv.style.marginBottom = "-10%";
       outputDiv.style.boxShadow = "5px 5px 10px rgba(0, 0, 0, 0.5)";
       outputDiv.style.animation = "fadein 0.8s ease-in";
-      outputDiv.style.width = "40%"
+      outputDiv.style.width = "30%"
       outputDiv.style.overflowY = "scroll"
       const valorPadraoForeach = document.createElement("p");
       console.log("Entrou na modalidade");
-      valorPadraoForeach.innerText =
-        "<<foreach [modalidade in Modalidades]>>\n*conteúdo*\n<</foreach>>\n\n<<foreach [parcela in Parcelas]>>\n*conteúdo*\n<</foreach>>";
+      valorPadraoForeach.innerHTML =
+        `
+        <br>
+        <button id="see-more-if" onclick="openSeeMoreForeach()">Ver mais</button>
+        `;
       valorPadraoForeach.style.color = "purple";
       console.log(valorPadraoForeach);
-      outputDiv.innerHTML += `Conteúdo mal formado: Estrutura ForEach na linha ${linhaPalavraMalFormada}.<br>
+      outputDiv.innerHTML += `Pode haver um ForEach mal formado.<br>
     
-      Verifique se o valor segue o seguinte padrão:
+      Veja como corrigir abaixo:
       <br>
       `;
       outputDiv.appendChild(valorPadraoForeach);
