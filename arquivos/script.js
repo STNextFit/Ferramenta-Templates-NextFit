@@ -333,40 +333,79 @@ function filtrarBotoes() {
 
 inputPesquisa.addEventListener("input", filtrarBotoes);
 
+//Alteração realizada pois o botão de remover não estava funcionando.
 function renderDocument() {
   const fileInput = document.getElementById("fileInput");
-  var file = fileInput.files[0];
+  const file = fileInput.files[0];
+  const editor = tinymce.get("editor");
 
-  if (!file || !file.name.endsWith(".docx")) {
-    alert("Por favor, selecione um arquivo DOCX válido.");
+  if (fileInput.files.length > 0) {
+    const file = fileInput.files[0];
+    const fileExtension = file.name.split('.').pop().toLowerCase();
+    if (fileExtension !== 'docx') {
+      alert("Somente arquivos .docx são aceitos.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const content = e.target.result;
+    };
+
+    reader.readAsText(file);
+  }
+
+  if (!firstFileAdded && !file) {
+    const copiedElement = document.createElement("div");
+    copiedElement.innerHTML = `
+      <div class="non-found-template">
+        <button id="closeAction">OK</button>
+        Adicione um template e tente novamente.
+      </div>`;
+    
+    const recebeAction = document.getElementById("recebeAction");
+    recebeAction.appendChild(copiedElement);
+
+    const closeAction = document.getElementById("closeAction");
+    closeAction.addEventListener("click", function () {
+      recebeAction.removeChild(copiedElement);
+    });
+
+    setTimeout(function () {
+      recebeAction.removeChild(copiedElement);
+    }, 4000);
     return;
   }
 
-  const editor = tinymce.get("editor");
-  const reader = new FileReader();
+  if (!firstFileAdded) {
+    firstFileAdded = true;
+  } else {
+    const mensagemDeErro = document.getElementById("mensagemDeErro");
+    mensagemDeErro.style.display = "inline";
+    return;
+  }
 
+  const reader = new FileReader();
   reader.onload = function (e) {
-    var arrayBuffer = e.target.result;
+    const arrayBuffer = e.target.result;
+    const mammothOptions = {};
+
     mammoth
       .convertToHtml({ arrayBuffer: arrayBuffer })
       .then(function (result) {
         formattedContent = result.value;
         editor.setContent(result.value);
         console.log("Primeiro texto enviado:\n" + formattedContent);
-
-        // Ativa o botão de remoção
         removeBtn.style.display = "inline";
         returnBtn.style.display = "inline";
       })
       .catch(function (err) {
-        console.error(err);
-        alert("Ocorreu um erro ao processar o arquivo DOCX. Verifique se o arquivo é válido.");
+        console.log(err);
+        alert("Ocorreu um erro ao processar o arquivo DOCX.");
       });
   };
-
   reader.readAsArrayBuffer(file);
 }
-
 
 function formatAndEditDocument() {
   const arquivo = document.createElement("p");
