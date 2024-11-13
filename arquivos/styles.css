@@ -1,33 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap');
+
+
 body {
     margin: 0;
-    background: rgb(114,0,195);
-    background: linear-gradient(7deg, rgb(153, 101, 190) 35%, rgba(255,255,255,1) 100%);
+    background: #FFF1F1;
     overflow-x: hidden;
     max-width: 100%;
+    padding: 0;
+    transform: scale(1);
   }
 
   #icon1{
     margin-right: 10px;
-    margin-left: -15px;
-    color: green;
+    margin-left: 10px;
+    color: rgb(0, 0, 0);
   }
 
   #icon2{
     margin-right: 10px;
-    margin-left: -25px;
-    color: rgb(113, 0, 128);
+    margin-left: 10px;
+    color: rgb(0, 0, 0);
   }
 
   #icon3{
     margin-right: 10px;
-    margin-left: -20px;
-    color: rgb(134, 0, 112);
+    margin-left: 20px;
+    color: rgb(0, 0, 0);
   }
 
   #icon4{
     margin-right: 10px;
     margin-left: -5Px;
-    color: rgb(0, 42, 134);
+    color: rgb(0, 0, 0);
   }
 
   #icon5{
@@ -38,8 +42,9 @@ body {
 
   .rowling{
     display: flex;
-    flex-direction: row;
     align-items: center;
+    font-style: normal;
+    justify-content: space-around;
   }
 
   #icon6{
@@ -63,7 +68,7 @@ body {
     border: none;
     outline: none;
     color: purple;
-    font-weight: 600;
+    font-weight: 100;
     border-radius: 50px;
   }
 
@@ -75,28 +80,26 @@ body {
     padding-left: 25px;
     height: 50px;
     color: #FFF;
-    text-transform: uppercase;
     display: flex;
-    margin-top: 10px;
+    margin-top: 18px;
     cursor: pointer;
     border-radius: 5px;
-    width: 15%;
+    width: 20%;
     align-items: center;
     border: none;
-    font-weight: bold;
-    color: rgb(0, 163, 168);
+    color: rgb(0, 0, 0);
     font-size: 13.5px;
     transition: 0.4s ease-in-out;
 }
 
  label:hover{
-  background-color: rgba(0, 210, 218, 0.192);
+  background-color: rgba(226, 0, 215, 0.274);
  }
 
  #icon0{
   margin-right: 12px;
-  margin-left: -5px;
-  color: rgb(0, 163, 168);
+  margin-left: 10px;
+  color: rgb(0, 0, 0);
  }
 
   #lineNumbers {
@@ -412,23 +415,20 @@ body {
 }
 
 #btnFormat{
-  width: 15%;
+  width: 20%;
   height: 50px;
   align-items: center;
   padding-left: 2.5%;
   background-color: transparent;
   border: none;
   font-weight: bold;
-  color: rgb(0, 134, 0);
+  color: rgb(0, 0, 0);
   font-size: 13.5px;
 }
 
 #btnFormat:hover{
-  background-color: rgba(0, 233, 0, 0.274);
+  background-color: rgba(226, 0, 215, 0.274)
 }
-
-
-
 
 #btnDownload{
   width: 15%;
@@ -457,7 +457,7 @@ body {
 
 
 #btnVerification{
-  width: 15%;
+  width: 20%;
   height: 50px;
   align-items: center;
   justify-content: start;
@@ -467,12 +467,12 @@ body {
   background-color: transparent;
   border: none;
   font-weight: bold;
-  color: rgb(134, 0, 112);
+  color: rgb(0, 0, 0);
   font-size: 13.5px;
 }
 
 #btnVerification:hover{
-  background-color: #63007059;
+  background-color: rgba(226, 0, 215, 0.274)
 }
 
 #see-more-if{
@@ -494,7 +494,7 @@ body {
 
 
 #howToUse{
-  width: 15%;
+  width: 20%;
   height: 50px;
   margin-top: 20px;
   justify-content: start;
@@ -506,7 +506,7 @@ body {
   background-color: transparent;
   border: none;
   font-weight: bold;
-  color: rgb(129, 0, 134);
+  color: rgb(0, 0, 0);
   font-size: 13.5px;
 }
 
@@ -572,33 +572,44 @@ body {
 }
 
 .variables-container{
-  background-color: rgba(255, 255, 255, 0.781);
-  flex-grow: 1;
-  min-height: 100vh;
-  box-shadow: 15px 1px 60px 5px rgba(0, 0, 0, 0.466);
-  justify-content: center;
-  width: 25vh;
+  width: 250px;
+  background: linear-gradient(
+  110deg, /* de cima para baixo */
+  #9729a3c7 10%,   
+  #411347 100% 
+  );
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Syne', sans-serif;
 } 
 .main-container{
   display: flex;
-  flex-direction: row;
+  gap: 20px;
 }
 
 #container{
-  margin-right: -150px;
-  margin-left: 9%;
+  align-items: center;
+  margin-left: 10px;
   transition: 0.7s ease-in-out;
+  font-family: 'Syne', sans-serif;
+  font-weight: 200;
 }
 
 
 #titleVariable {
-  font-weight: 300;
-  color:#a031ae;
+  font-size: 36px;
+  margin-bottom: 3px;
+  color: white;
 }
 
 #subtitleVariable {
+  font-size: 16px;
   font-weight: 500;
-  color: #630070;
+  margin-top: 10px;
+  color: white;
 }
 
 .success{
@@ -653,14 +664,6 @@ body {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-#logoNextFit{
-  width: 12%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  margin-top: 5%;
-}
-
 .variables-container button {
   margin-left: 12px;
   margin-right: 10px;
@@ -672,6 +675,7 @@ body {
   overflow: hidden;
   position: relative;
   z-index: 0;
+  text-align: center;
 }
 
 #inputPesquisa{
@@ -679,23 +683,33 @@ body {
   margin-left: auto;
   margin-right: auto;
   height: 40px;
+  border-radius: 25px;
+}
+
+#inputPesquisa::placeholder{
+  text-align: center;
+  color: black;
+  opacity: 0.5;
 }
 
 .copied-text{
-  background-color: rgb(0, 0, 0);
-  color: white;
+  background-color: #fef6ffc4;
+  color: rgb(90, 90, 90);
   margin-left: 9.5%;
-  width: 20%;
+  width: 15%;
+  height: 80px;
+  border-radius: 25px;
+  text-align: center;
+  justify-content: center;
   position: fixed;
-  padding: 0;
+  padding: 5px;
   animation: fadeinout ease-in infinite;
-  z-index: 4;
 }
 
 
 .non-found-template{
   background-color: rgb(0, 0, 0);
-  color: white;
+  color: rgb(0, 0, 0);
   margin-left: -0.5%;
   width: 30%;
   position: absolute;
@@ -706,11 +720,11 @@ body {
 #closeAction{
   height: 40px;
   margin-bottom: 5%;
-  margin-left: 10px;
+  margin-left: 0px;
   outline: none;
   border: none;
   background-color: transparent;
-  color: white;
+  color: rgb(0, 0, 0);
   transition: 0.2s ease-in-out;
 }
 
@@ -746,18 +760,46 @@ body {
 }
 
 #variaveisDropdownClientes{
-  width: 50%;
+  width: 60%;
   margin-left: 25%;
   height: 50px;
   position: relative;
   background-color: transparent;
+  color: white;
+  font-size: 15px;
+  margin-top: 10px;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 5px;
+  cursor: pointer;
+  position: relative;
   border: none;
-  color: purple;
-  font-weight: bold;
+  background: none;
+  text-transform: uppercase;
+  transition: .2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-#variaveisDropdownClientes:hover{
-  background-color: rgba(189, 0, 189, 0.377);
+#variaveisDropdownClientes::after {
+  content: '';
+  border-bottom: 2px solid rgb(255, 255, 255);
+  width: 0;
+  height: 100%;
+  position: absolute;
+  margin-top: -5px;
+  top: 0;
+  left: 5px;
+  visibility: hidden;
+  opacity: 1;
+  transition: .2s linear;
+}
+
+#variaveisDropdownClientes:hover::after {
+  visibility: visible;
+  opacity: 0.7;
+  width: 90%;
+}
+
+#variaveisDropdownClientes:hover {
+  opacity: 1;
 }
 
 #howToPersonalize{
@@ -797,17 +839,26 @@ body {
 #listagemForEachParcelas {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 #verificacaoIf {
+  margin-left: 20%;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 11.5%;
-  width: 350%;
+  align-items: center;
+  text-align: center;
+  width: 200%;
 }
 #verificacaoIf button {
   height: 20%;
-  background-color: rgb(37, 37, 37);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.349);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 #verificacaoIf button:hover{
@@ -815,14 +866,22 @@ body {
 }
 
 #estruturasProntas {
+  margin-left: 20%;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 11.5%;
-  width: 350%;
+  align-items: center;
+  text-align: center;
+  width: 200%;
 }
 #estruturasProntas button {
   height: 20%;
-  background-color: rgb(37, 37, 37);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.349);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 #estruturasProntas button:hover{
@@ -931,54 +990,116 @@ hr{
   box-shadow: 0px 5px 20px 5px rgba(0, 0, 0, 0.89);;
 }
 
+
+
 .container-clientes button {
-  background-color: #A031AE;
-  color: white;
+  width: 27%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.349);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .container-clientes button:hover{
-  background-color: #630070;
-  color: white;
+  background-color: #ef78ff57;
+  color: rgb(255, 255, 255);
 }
 
 .container-empresa button {
-  background-color: #A031AE;
-  color: white;
+  width: 27%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.349);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .container-empresa button:hover{
-  background-color: #630070;
-  color: white;
+  background-color: #ef78ff57;
+  color: rgb(255, 255, 255);
 }
 
 .container-contrato button {
-  background-color: #A031AE;
-  color: white;
+  width: 27%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.349);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .container-contrato button:hover{
-  background-color: #630070;
-  color: white;
+  background-color: #ef78ff57;
+  color: rgb(255, 255, 255);
 }
 
 .container-responsavel button {
-  background-color: #A031AE;
-  color: white;
+  width: 27%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.349);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .container-responsavel button:hover{
-  background-color: #630070;
-  color: white;
+  background-color: #ef78ff57;
+  color: rgb(255, 255, 255);
 }
 
 .container-estrutura button {
-  background-color: #A031AE;
-  color: white;
+  width: 27%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.349);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .container-estrutura button:hover{
-  background-color: #630070;
-  color: white;
+  background-color: #ef78ff57;
+  color: rgb(255, 255, 255);
 }
 
 #matriculaFormatado{
@@ -1041,14 +1162,14 @@ hr{
   margin-top: -10px;
   font-size: 20px;
   font-weight: 500;
-  color: #630070;
+  color: #ffffff;
 }
 
 #forEachParcela{
   margin-top: -10px;
   font-size: 20px;
   font-weight: 500;
-  color: #630070;
+  color: #ffffff;
 }
 
 #textAreaListagem{
@@ -1076,23 +1197,25 @@ hr{
 }
 
 #copyBtnList{
+  margin-top: 10px;
   border-radius: 2px;
-  width: 96.1%;
+  width: 100%;
   margin-left: 0%;
   margin-right: auto;
   height: 40px;
-  margin-top: -42px;
+  border-radius: 10px;
 
 }
 
 
 #copyBtnListParcela{
+  margin-top: 10px;
   border-radius: 2px;
-  width: 96.1%;
+  width: 100%;
   margin-left: 0%;
   margin-right: auto;
   height: 40px;
-  margin-top: -42px;
+  border-radius: 10px;
 
 }
 
@@ -1186,22 +1309,34 @@ hr{
 }
 
 
-
-@media only screen and (max-width: 1760px) {
-  .variables-container{
-     width: 550px;
+@media only screen and (max-width: 1920px) {
+  .variables-container {
+    width: 700px;
+    position: relative;
   }
+}
+
 
   #searchCamp{
-    width: 350px;
+    background-color: #F1F1F1;
+    border-radius: 25px;
+    width: 100%;
   }
 
-}
+  input::placeholder{
+    text-align: center;
+    color: #000;
+    opacity: 1;
+  }
+
 
 .verify-group{
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  width: 25%;
+  margin-left: 10%;
+  color: #000;
 }
 
 /* Estilo básico do switch */
@@ -1211,6 +1346,7 @@ hr{
   width: 35px; /* Largura do switch */
   height: 20px; /* Altura do switch */
   margin-left: 7px;
+  margin-bottom: 12px;
 }
 
 .switch:hover{
@@ -1276,7 +1412,7 @@ input:checked + .slider:before {
   font-weight: 700;
   margin-left: 7px;
   margin-top: 1%;
-  color: rgb(134, 0, 112);
+  color: rgb(0, 0, 0);
 }
 
 #googleForms{
@@ -1629,3 +1765,7 @@ input:checked + .slider:before {
   scale: calc(1.04);
 }
 
+.nomeModalidade{
+  color: #000;
+  background-color: #000;
+}
