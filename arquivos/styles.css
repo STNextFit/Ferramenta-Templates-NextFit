@@ -12,13 +12,13 @@ body {
 
   #icon1{
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 0px;
     color: rgb(0, 0, 0);
   }
 
   #icon2{
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 0px;
     color: rgb(0, 0, 0);
   }
 
@@ -45,14 +45,15 @@ body {
     align-items: center;
     font-style: normal;
     justify-content: space-around;
+    margin-left: -3%;
   }
 
   #icon6{
-    margin-right: 10px;
-    margin-left: -5Px;
+    margin-right: 0px;
+    margin-left: 0px;
     color: rgb(16, 104, 4);   
     margin-top: 10px;
-    margin-left:  10px;
+    margin-left:  2px;
     scale: calc(1.05);
     animation: fadein 0.4s ease-in-out;
   }
@@ -84,12 +85,13 @@ body {
     margin-top: 18px;
     cursor: pointer;
     border-radius: 5px;
-    width: 20%;
+    width: 16%;
     align-items: center;
     border: none;
     color: rgb(0, 0, 0);
-    font-size: 13.5px;
+    font-size: 15px;
     transition: 0.4s ease-in-out;
+    text-transform: uppercase;
 }
 
  label:hover{
@@ -98,7 +100,7 @@ body {
 
  #icon0{
   margin-right: 12px;
-  margin-left: 10px;
+  margin-left: 2px;
   color: rgb(0, 0, 0);
  }
 
@@ -361,6 +363,7 @@ body {
   max-width: 70%; /* Largura máxima igual à largura do documento Word */
   text-align: justify; /* Justificar o texto */
   top: 10%;
+  margin-left: 10%;
 }
 
 #output {
@@ -415,15 +418,14 @@ body {
 }
 
 #btnFormat{
-  width: 20%;
+  width: 17%;
   height: 50px;
   align-items: center;
   padding-left: 2.5%;
   background-color: transparent;
   border: none;
-  font-weight: bold;
   color: rgb(0, 0, 0);
-  font-size: 13.5px;
+  font-size: 15px;
 }
 
 #btnFormat:hover{
@@ -457,18 +459,16 @@ body {
 
 
 #btnVerification{
-  width: 20%;
+  width: 15%;
   height: 50px;
   align-items: center;
   justify-content: start;
   display: flex;
   margin-bottom: 10px;
-  padding-left: 5%;
   background-color: transparent;
   border: none;
-  font-weight: bold;
   color: rgb(0, 0, 0);
-  font-size: 13.5px;
+  font-size: 15px;
 }
 
 #btnVerification:hover{
@@ -494,7 +494,7 @@ body {
 
 
 #howToUse{
-  width: 20%;
+  width: 16%;
   height: 50px;
   margin-top: 20px;
   justify-content: start;
@@ -502,12 +502,10 @@ body {
   justify-content: start;
   display: flex;
   margin-bottom: 10px;
-  padding-left: 2.5%;
   background-color: transparent;
   border: none;
-  font-weight: bold;
   color: rgb(0, 0, 0);
-  font-size: 13.5px;
+  font-size: 15px;
 }
 
 #howToUse:hover{
@@ -1284,11 +1282,12 @@ hr{
   padding-left: 2.5%;
   background-color: transparent;
   border: none;
-  font-weight: bold;
-  color: rgb(0, 13, 134);
+  color: rgb(255, 255, 255);
   font-size: 13.5px;
   transition: 0.3s;
   border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 15px;
 }
 
 #btnForm:hover{
@@ -1439,15 +1438,15 @@ input:checked + .slider:before {
   padding-left: 2.5%;
   background-color: transparent;
   border: none;
-  font-weight: bold;
-  color: rgb(58, 145, 0);
+  color: rgb(255, 255, 255);
   font-size: 13.5px;
   transition: 0.3s;
   border-radius: 5px;
+  font-size: 15px;
 }
 
 #btnHelp:hover{
-  background-color: rgba(84, 211, 0, 0.596);
+  background-color: rgba(0, 34, 226, 0.274);
 }
 
 #helpCamp{
@@ -1713,7 +1712,7 @@ input:checked + .slider:before {
   background-color: transparent;
   border: none;
   font-weight: bold;
-  color: rgb(0, 13, 134);
+  color: rgb(255, 255, 255);
   font-size: 13.5px;
   transition: 0.3s;
   border-radius: 5px;
@@ -1768,4 +1767,8 @@ input:checked + .slider:before {
 .nomeModalidade{
   color: #000;
   background-color: #000;
+}
+
+.tox-tinymce{
+  margin-left: 10%;
 }

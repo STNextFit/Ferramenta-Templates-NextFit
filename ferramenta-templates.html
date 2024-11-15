@@ -164,19 +164,17 @@
     </div>    
   <div class="container mt-5 text-center teste" id="container" >
     <div class="rowling">
-      <label id="labelInput" for="fileInput">Selecionar .Docx<i class="fa-solid fa-file-import" id="icon0"></i></label>
+      <label id="labelInput" for="fileInput"><i class="fa-solid fa-file-import" id="icon0"></i>Selecionar .DOCX</label>
       <input type="file" id="fileInput" name="fileInput" onchange="showIcon()" accept=".docx"/>
       <i class="fa-solid fa-circle-check" id="icon6" style="display: none;"></i>
-
-      <button onclick="renderDocument()" class="btn btn-success mt-3 d-flex justify-content-start" id="btnFormat">Formatar e Editar<i class="fa-regular fa-pen-to-square" id="icon1"></i></button>
-
-      <button onclick="clickParaVerificar()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnVerification" style="display: none;">Verificar<i class="fa-solid fa-magnifying-glass" id="icon3"></i></button>
-
+      <button onclick="renderDocument()" class="btn btn-success mt-3 d-flex justify-content-start" id="btnFormat"><i class="fa-regular fa-pen-to-square" id="icon1"></i>FORMATAR E EDITAR</button>
       <a href="https://www.loom.com/share/d7d81f995bb643f0b2ea4c05b73a4765?sid=9f4e1d55-acd1-44b1-8fb7-21a8afb7bbeb" target="_blank" id="howToUse" class="btn btn-danger justify-content-center align-items-center">
-        Como usar? <i class="fa-regular fa-circle-question" id="icon2" aria-hidden="true"></i>
+        <i class="fa-regular fa-circle-question" id="icon2" aria-hidden="true"></i> COMO USAR?
       </a>
-
+      <button onclick="clickParaVerificar()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnVerification" style="display: none;"><i class="fa-solid fa-magnifying-glass" id="icon3"></i>VERIFICAR</button>
     </div>
+    
+    <!-- Correção do botão -->
     <div class="verify-group">
       <label class="switch">
         <input type="checkbox" id="toggleSwitch">
@@ -191,14 +189,20 @@
     <textarea id="editor"></textarea>
   </div>
   <div class="variables-container">
+    <button id="slideButton" class="btn btn-primary"><i class="fa-solid fa-arrow-right" ></i></button>
     <div id="recebeAction"></div>
     <h1 class="mt-2 d-flex justify-content-center" id="titleVariable">Templates</h1>
     <p class="d-flex justify-content-center" id="subtitleVariable">Configure seu template!</p>
     <br>
     <div id="searchCamp" class="input-group">
-      <input type="text" placeholder="Pesquise sua variável" class="form-control" id="inputPesquisa">
+      <input type="text" placeholder="Pesquise a variável..." class="form-control" id="inputPesquisa">
     </div>
     <div class="buttons-form-tutorial">
+      <div id="googleForms">
+        <a href="https://forms.gle/bjCg1tCn5DRgkxHp7" target="_blank" id="aBtnForm"><button id="btnForm">GOOGLE FORMS</button></a>
+        <button id="btnHelp" onclick="openPopUpHelp()">PRECISA DE AJUDA?</button>
+      </div>
+    </div>
     <br>
     <!--------------------------------------------------------------------------->
     <button class="btn btn-success" id="variaveisDropdownClientes" onclick="mostrarSubMenu('clientes')">DADOS DO CLIENTE <span id="arrowIconClientes" class="arrow-down">&#10095;</span></button>
@@ -206,13 +210,13 @@
       <button class="btn btn meusBotoes" id="clienteNome" onclick="copiarTexto('<<[NomeCliente]>>')" data-mensagem="Exemplo de uso: Fulano da Silva">Nome do cliente</button>
       <button class="btn btn meusBotoes" id="clienteCpf" onclick="copiarTexto('<<[CpfCliente]>>')" data-mensagem="Exemplo de uso: 187.553.560-87">CPF do cliente</button>
       <button class="btn btn meusBotoes" id="clienteRG" onclick="copiarTexto('<<[RgCliente]>>')" data-mensagem="Exemplo de uso: 23.118.664-2">RG do cliente</button>
-      <button class="btn btn meusBotoes" id="clienteNasc" onclick="copiarTexto('<<[DataNascimentoCliente]>>')" data-mensagem="Exemplo de uso: 20/08/1992">Data de nascimento</button>
+      <button class="btn btn meusBotoes" id="clienteNasc" onclick="copiarTexto('<<[DataNascimentoCliente]>>')" data-mensagem="Exemplo de uso: 20/08/1992">Data de nascimento do cliente</button>
       <button class="btn btn meusBotoes" id="clienteSexo" onclick="copiarTexto('<<[SexoCliente]>>')" data-mensagem="Exemplo de uso: Masculino/Feminino">Sexo do cliente</button>
       <button class="btn btn meusBotoes" id="clienteEmail" onclick="copiarTexto('<<[EmailCliente]>>')" data-mensagem="Exemplo de uso: emaildocliente@gmail.com">Email do cliente</button>
       <button class="btn btn meusBotoes" id="clienteTel" onclick="copiarTexto('<<[TelefoneCliente]>>')" data-mensagem="Exemplo de uso: (48) 987654321">Telefone do cliente</button>
       <button class="btn btn meusBotoes" id="clienteEndereco" onclick="copiarTexto('<<[EnderecoCliente]>>')" data-mensagem="Exemplo de uso: Avenida Tietê">Endereço do cliente</button>
-      <button class="btn btn meusBotoes" id="clienteNumEndereco" onclick="copiarTexto('<<[NumeroEnderecoCliente]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço</button>
-      <button class="btn btn meusBotoes" id="clienteComp" onclick="copiarTexto('<<[ComplementoEnderecoCliente]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço</button>
+      <button class="btn btn meusBotoes" id="clienteNumEndereco" onclick="copiarTexto('<<[NumeroEnderecoCliente]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço do cliente</button>
+      <button class="btn btn meusBotoes" id="clienteComp" onclick="copiarTexto('<<[ComplementoEnderecoCliente]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço do cliente</button>
       <button class="btn btn meusBotoes" id="clienteBairro" onclick="copiarTexto('<<[BairroCliente]>>')" data-mensagem="Exemplo de uso: Centro">Bairro do cliente</button>
       <button class="btn btn meusBotoes" id="clienteCEP" onclick="copiarTexto('<<[CepCliente]>>')" data-mensagem="Exemplo de uso: 12345-678">CEP do cliente</button>
       <button class="btn btn meusBotoes" id="clienteCidade" onclick="copiarTexto('<<[CidadeCliente]>>')" data-mensagem="Exemplo de uso: Nova Veneza">Cidade do cliente</button>
@@ -230,8 +234,8 @@
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[TelefoneFilial]>>')" data-mensagem="Exemplo de uso: (48) 987654321">Telefone da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EmailFilial]>>')" data-mensagem="Exemplo de uso: contato@nextfit.com.br">Email da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EnderecoFilial]>>')" data-mensagem="Exemplo de uso: Avenida Tietê">Endereço da empresa</button>
-      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NumeroEnderecoFilial]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço</button>
-      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ComplementoEnderecoFilial]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NumeroEnderecoFilial]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço da empresa</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ComplementoEnderecoFilial]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[BairroFilial]>>')" data-mensagem="Exemplo de uso: Centro">Bairro da empresa</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CepFilial]>>')" data-mensagem="Exemplo de uso: 12345-678">CEP da empresa</button>
       <button class="btn btn me usBotoes" onclick="copiarTexto('<<[CidadeFilial]>>')" data-mensagem="Exemplo de uso: Nova Veneza">Cidade da empresa</button>
@@ -274,13 +278,13 @@
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NomeResponsavel]>>')" data-mensagem="Exemplo de uso: Fulano da Silva">Nome do responsável</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CpfResponsavel]>>')" data-mensagem="Exemplo de uso: 191.000.000-00">CPF do responsável</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[RgResponsavel]>>')" data-mensagem="Exemplo de uso: 1234567">RG do responsável</button>
-      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataNascimentoResponsavel]>>')" data-mensagem="Exemplo de uso: 20/11/1990">Data de nascimento</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[DataNascimentoResponsavel]>>')" data-mensagem="Exemplo de uso: 20/11/1990">Data de nascimento do responsável</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[SexoResponsavel]>>')" data-mensagem="Exemplo de uso: Masculino/Feminino">Sexo do responsável</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EmailResponsavel]>>')" data-mensagem="Exemplo de uso: contato@nextfit.com.br">Email do responsável</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[TelefoneResponsavel]>>')" data-mensagem="Exemplo de uso: (48) 987654321">Telefone do responsável</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[EnderecoResponsavel]>>')" data-mensagem="Exemplo de uso: Avenida Tietê">Endereço do responsável</button>
-      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NumeroEnderecoResponsavel]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço</button>
-      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ComplementoEnderecoResponsavel]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[NumeroEnderecoResponsavel]>>')" data-mensagem="Exemplo de uso: 2000">Número do endereço do responsável</button>
+      <button class="btn btn meusBotoes" onclick="copiarTexto('<<[ComplementoEnderecoResponsavel]>>')" data-mensagem="Exemplo de uso: Sala 203">Complemento do endereço do responsável</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[BairroResponsavel]>>')" data-mensagem="Exemplo de uso: Centro">Bairro do responsável</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CepResponsavel]>>')" data-mensagem="Exemplo de uso: 12345-678">CEP do responsável</button>
       <button class="btn btn meusBotoes" onclick="copiarTexto('<<[CidadeResponsavel]>>')" data-mensagem="Exemplo de uso: Nova Veneza">Cidade do responsável</button>
@@ -329,7 +333,7 @@
           <input class="form-check-input" type="checkbox" role="switch" id="qtdPacoteAulas">
           <label class="form-check-label" for="">Quantidade do pacote de aulas</label>
         </div>
-        <p style="font-size: 20px; margin-top: 20px; font-weight: 500;color: #ffffff;">Visualização do cliente: (exemplo)</p>
+        <p style="font-size: 20px; margin-top: 20px; font-weight: 500;color: #630070;">Visualização do cliente: (exemplo)</p>
         <textarea name="" id="textAreaListagem" cols="77" rows="12" readonly></textarea>
         <button class="btn" id="copyBtnList" onclick="copiarTextoList()">Copiar</button>
         <hr class="hr-personalizacao">
@@ -348,7 +352,7 @@
           <input class="form-check-input" type="checkbox" role="switch" id="dataVencimento">
           <label class="form-check-label" for="">Data de vencimento</label>
         </div>
-        <p style="font-size: 20px; margin-top: 20px; font-weight: 500;color: #ffffff;">Visualização do cliente: (exemplo)</p>
+        <p style="font-size: 20px; margin-top: 20px; font-weight: 500;color: #630070;">Visualização do cliente: (exemplo)</p>
         <textarea name="" id="textAreaListagemParcela" cols="77" rows="4" readonly></textarea>
         <button class="btn" id="copyBtnListParcela" onclick="copiarTextoListParcela()">Copiar</button>
         <hr class="hr-personalizacao">

@@ -2225,7 +2225,7 @@ function esconderMensagem() {
 }
 
 tinymce.init({
-  selector: "textarea#editor",
+  selector: "#editor",
   debug: true,
   menubar: false,
   plugins: "autoresize",
@@ -2253,6 +2253,8 @@ tinymce.init({
       Promise.reject("See docs to implement AI Assistant")
     ),
 });
+
+console.log(tinymce.get('editor'));
 
 if (!Promise.allSettled) {
   Promise.allSettled = function (promises) {
