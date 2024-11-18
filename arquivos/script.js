@@ -2179,17 +2179,12 @@ function verificarTexto() {
 
 
   if (!temErros) {
-    
     outputDiv.style.left  = "130px"
     outputDiv.style.width = "500px"
     outputDiv.innerHTML +=
       '<span class="purple">Nenhum erro encontrado.\nO texto está correto!</span>';
     const divContainer = document.getElementById("btnDownloadContainer");
     console.log("Sem erros!")
-    const buttonExists = divContainer.querySelector('button') !== null;
-    if (!buttonExists) {
-      divContainer.innerHTML += `    <button onclick="downloadDocx()" class="btn btn-primary mt-3 d-flex justify-content-start" id="btnDownload" style="display: none;"><i class="fa-regular fa-file-word" id="icon4"></i>BAIXAR TEMPLATE</button>`;
-    }
     const lineNumbers = document.getElementById("lineNumbers");
     lineNumbers.style.top = "45.8%";
     const loaderContainer = document.getElementById("loaderContainer");
